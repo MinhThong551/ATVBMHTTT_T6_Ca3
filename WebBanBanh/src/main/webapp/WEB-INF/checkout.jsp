@@ -303,7 +303,7 @@
                                 <div class="select__payment">
                                     <div class="payment__choices-cd selected"
                                          id="payment__by-creditCard">
-                                        <label for="credit_card">
+                                        <%--@declare id="credit_card"--%><label for="credit_card">
                                             <svg style="position:relative;top:-10px;"
                                                  xmlns="http://www.w3.org/2000/svg" height="2em"
                                                  viewBox="0 0 576 512">
@@ -318,7 +318,7 @@
 
 
                                     <div class="payment__choices-pp" id="payment__by-paypal">
-                                        <label for="paypal">
+                                        <%--@declare id="paypal"--%><label for="paypal">
                                             <svg style="position:relative;top:-10px;"
                                                  xmlns="http://www.w3.org/2000/svg" height="2em"
                                                  viewBox="0 0 576 512">
@@ -396,24 +396,24 @@
         </div>
     </section> <!-- .section -->
 </form><!-- END -->
-<div class="containerVoucher">
-    <button type="button" class="open-btn-voucher" id="openBtnVoucher">Chọn mã giảm giá</button>
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="close-btn" id="closeBtn">&times;</span>
-            <h2>Chọn mã giảm giá</h2>
-            <input type="text" placeholder="Nhập mã giảm giá" id="couponCode">
-            <button class="apply-btn" id="applyBtnVoucher">Áp dụng</button>
-            <div class="coupons" id="couponsList"></div>
-            <div class="totalAfterUsingVoucher">
-                <p>Giảm: <span id="discountVoucherPrice"></span></p>
-                <p>Còn: <span id="priceAfterUseVoucher">0.000₫</span></p>
-            </div>
-            <button type="button" class="confirm-btn-voucher" id="confirmBtnVoucher">Đồng ý</button>
-        </div>
-    </div>
+<%--<div class="containerVoucher">--%>
+<%--    <button type="button" class="open-btn-voucher" id="openBtnVoucher">Chọn mã giảm giá</button>--%>
+<%--    <div class="popup" id="popup">--%>
+<%--        <div class="popup-content">--%>
+<%--            <span class="close-btn" id="closeBtn">&times;</span>--%>
+<%--            <h2>Chọn mã giảm giá</h2>--%>
+<%--            <input type="text" placeholder="Nhập mã giảm giá" id="couponCode">--%>
+<%--            <button class="apply-btn" id="applyBtnVoucher">Áp dụng</button>--%>
+<%--            <div class="coupons" id="couponsList"></div>--%>
+<%--            <div class="totalAfterUsingVoucher">--%>
+<%--                <p>Giảm: <span id="discountVoucherPrice"></span></p>--%>
+<%--                <p>Còn: <span id="priceAfterUseVoucher">0.000₫</span></p>--%>
+<%--            </div>--%>
+<%--            <button type="button" class="confirm-btn-voucher" id="confirmBtnVoucher">Đồng ý</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
-</div>
+<%--</div>--%>
 
 <footer class="ftco-footer ftco-section">
     <div class="container">
