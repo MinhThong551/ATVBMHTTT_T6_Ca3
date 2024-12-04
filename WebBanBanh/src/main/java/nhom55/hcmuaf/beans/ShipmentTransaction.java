@@ -20,4 +20,5 @@ public class ShipmentTransaction implements Serializable {
   private LocalDateTime transactionDate;
   private Integer createdBy;
   private String note;
+
 }

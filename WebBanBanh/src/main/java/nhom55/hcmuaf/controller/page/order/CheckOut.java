@@ -47,7 +47,7 @@ public class CheckOut extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
 
     String lastName = request.getParameter("ho_nguoi-dung");
     String firstName = request.getParameter("ten_nguoi-dung");
@@ -56,103 +56,98 @@ public class CheckOut extends HttpServlet {
     String district = request.getParameter("districtName");
     String phoneNumber = request.getParameter("sdt_nguoi-dung");
     String email = request.getParameter("email_nguoi-dung");
-    String deliveryFee = request.getParameter("delivery_fee");
-    String cleanedString = deliveryFee.replaceAll("[₫\\s]", "");
-    cleanedString = cleanedString.replace(".", "");
-    double deliveryFeeDouble = Double.parseDouble(cleanedString);
+    double deliveryFeeDouble = 0.0; // Delivery fee cố định bằng 0
     String note = request.getParameter("note_nguoi-dung");
     String idVoucherString = request.getParameter("idVoucher");
     int idVoucher = 0;
+
     if (idVoucherString != null && !idVoucherString.trim().isEmpty()) {
       idVoucher = Integer.valueOf(idVoucherString);
     }
+
     if (checkValidate(request, response, lastName, firstName, address, city, phoneNumber, email)) {
       HttpSession session = request.getSession();
       Users users = MyUtils.getLoginedUser(session);
       double subTotalPrice = 0;
-      // get selected Product for buy
+
+      // Get selected products
       List<String> selectedProductIds = (List<String>) session.getAttribute("selectedProductIds");
       CartsEntityWebSocket cart = MyUtils.getCart(session);
       if (cart != null && selectedProductIds != null) {
-        // get product list selected from cart
         List<CartsEntityWebSocket.CartItem> cartItem = cart.getCartItemList();
         subTotalPrice = (Double) session.getAttribute("subTotalPrice");
         BillDao billDao = new BillDaoImpl();
-        // biến này sẽ lưu tất cả các hóa đơn người dùng đã mua
+
         List<Bills> listBills = new ArrayList<>();
         LocalDateTime timeNow = LocalDateTime.now();
         String productNameList = "";
         for (CartsEntityWebSocket.CartItem itemProduct : cartItem) {
           productNameList += itemProduct.getProductName() + ", ";
         }
+
         int idPayment = 1;
-        address += address + ", quận " + district + ", tỉnh " + city;
+        address += ", quận " + district + ", tỉnh " + city;
 
         if (billDao.addAListProductToBills(timeNow, productNameList, "Đang giao", users.getId(),
-            idPayment, firstName, lastName, address, city, phoneNumber, email, subTotalPrice,
-            deliveryFeeDouble, note)) {
+                idPayment, firstName, lastName, address, city, phoneNumber, email, subTotalPrice,
+                deliveryFeeDouble, note)) {
           int id_bills = billDao.getIDAListProductFromBills(timeNow, users.getId());
           for (CartsEntityWebSocket.CartItem itemProduct : cartItem) {
             if (billDao.addAProductToBillDetails(itemProduct.getId(), id_bills,
-                itemProduct.getQuantity(), itemProduct.getQuantity() * itemProduct.getPrice())) {
-//              billDao.degreeAmountWhenOderingSuccessfully(itemProduct.getId(),itemProduct.getQuantity());
+                    itemProduct.getQuantity(), itemProduct.getQuantity() * itemProduct.getPrice())) {
+              // Optional: giảm số lượng sản phẩm
             }
           }
 
-          // xoa san pham sau khi dat hang
+          // Xóa giỏ hàng sau khi đặt hàng
           deleteCart(session);
 
-          //          Thông báo người mua đã đặt thành công
+          // Gửi email thông báo
           Properties smtpProperties = MailProperties.getSMTPPro();
           Session session1 = Session.getInstance(smtpProperties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-              return new PasswordAuthentication(MailProperties.getEmail(),
-                  MailProperties.getPassword());
+              return new PasswordAuthentication(MailProperties.getEmail(), MailProperties.getPassword());
             }
           });
           try {
             Message message = new MimeMessage(session1);
-            message.addHeader("Content-type", "text/HTML; charset= UTF-8");
+            message.addHeader("Content-type", "text/HTML; charset=UTF-8");
             message.setFrom(new InternetAddress(MailProperties.getEmail()));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setSubject("DAT HANG");
+            message.setSubject("ĐẶT HÀNG");
             message.setText(
-                "Don dat hang cua ban thanh cong. Xem don hang ban vua moi dat tai day : "
-                    + "http://localhost:8080/page/bill/detail?idBills="
-                    + id_bills);
+                    "Đơn đặt hàng của bạn đã thành công. Xem chi tiết đơn hàng tại: "
+                            + "http://localhost:8080/page/bill/detail?idBills=" + id_bills);
             Transport.send(message);
-            boolean isOrderSuccessfully = true;
+
+            // Logging đặt hàng thành công
             Log<Bills> log = new Log<>();
             AbsDAO<Bills> absDAO = new AbsDAO<>();
-            RequestInfo requestInfo = new RequestInfo(request.getRemoteAddr(), "HCM", "VietNam");
+            RequestInfo requestInfo = new RequestInfo(request.getRemoteAddr(), "HCM", "Vietnam");
             log.setLevel(LogLevels.INFO);
             log.setIp(requestInfo.getIp());
             log.setAddress(requestInfo.getAddress());
             log.setNational(requestInfo.getNation());
             log.setNote("Người dùng " + users.getUsername() + " vừa đặt hàng thành công");
             log.setCurrentValue(
-                lastName + " " + firstName + ", địa chỉ: " + address + ", số điện thoại: "
-                    + phoneNumber + ", email: " + email + ", giá tiền đơn hàng: " + subTotalPrice
-                    + ", tiền vận chuyển: " + deliveryFeeDouble + ", ghi chú: " + note
-                    + ", kiểu thanh toán: Thẻ tín dụng " + ", ngày đặt hàng: " + timeNow
-                    + " ,tổng tiền: " + (subTotalPrice + deliveryFeeDouble));
+                    lastName + " " + firstName + ", địa chỉ: " + address + ", số điện thoại: "
+                            + phoneNumber + ", email: " + email + ", giá tiền đơn hàng: " + subTotalPrice
+                            + ", tiền vận chuyển: " + deliveryFeeDouble + ", ghi chú: " + note
+                            + ", kiểu thanh toán: Thẻ tín dụng " + ", ngày đặt hàng: " + timeNow
+                            + ", tổng tiền: " + (subTotalPrice + deliveryFeeDouble));
             log.setCreateAt(timeNow);
             absDAO.insert(log);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("/page/bill/list-bill");
-//            request.setAttribute("isOrderSuccessfully",isOrderSuccessfully);
             dispatcher.forward(request, response);
           } catch (Exception e) {
-            System.out.println("SendEmail File Error " + e);
+            System.out.println("SendEmail Error: " + e);
           }
         }
-
-
       }
-
     } else {
       doGet(request, response);
     }
-
   }
 
 
