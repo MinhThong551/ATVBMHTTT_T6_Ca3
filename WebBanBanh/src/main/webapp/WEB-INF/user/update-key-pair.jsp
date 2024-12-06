@@ -112,7 +112,7 @@
             Chỉnh sửa thông tin
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="${pageContext.request.contextPath}/page/user/update-pass?id=${user.getId()}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
             Đổi mật khẩu
@@ -131,7 +131,7 @@
             Giỏ Hàng của bạn
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="${pageContext.request.contextPath}/page/user/update-key-pair?id=${user.getId()}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
             Quản lí khoá
@@ -140,69 +140,40 @@
       </ul>
     </div>
 
-
     <div class="container-child-right">
-      <h4>Đổi mật khẩu</h4>
+      <h4>Tạo khóa</h4>
       <hr style="border-top: 1px solid #000000;">
-      <form class="change-password" action="${pageContext.request.contextPath}/page/user/update-pass" method="post">
-        <table style="border-collapse:collapse;
-                    border: none; ">
+      <form class="create-key" action="${pageContext.request.contextPath}/page/user/create-key" method="post">
+        <table style="border-collapse: collapse; border: none;">
           <tr>
             <td>
-              <label for="old-password">Mật khẩu cũ<span class="not-empty"> *</span></label>
+              <label for="public-key">Khóa công khai<span class="not-empty"> *</span></label>
             </td>
             <td>
-              <input type="password" id="old-password" name="old-password" value="${oldPass}">
-              <span class="error-msg required" id="old-password-error" style="display: none;"></span>
-              <c:if test="${not empty error_oldPassword}">
-                <p style="color: red"> ${error_oldPassword}</p>
-              </c:if>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <label for="new-password">Mật khẩu mới<span class="not-empty"> *</span></label>
-            </td>
-            <td>
-              <input type="password" id="new-password" name="new-password" value="${newPass}">
-              <span class="error-msg required" id="new-password-error" style="display: none;"></span>
-              <c:if test="${not empty error_newPassword}">
-                <p style="color: red"> ${error_newPassword}</p>
-              </c:if>
-              <c:if test="${not empty error_checkOldAndNewPass}">
-                <p style="color: red"> ${error_checkOldAndNewPass}</p>
-              </c:if>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="retype-password">Nhập lại mật khẩu mới<span class="not-empty"> *</span></label>
-            </td>
-            <td>
-              <input type="password" id="retype-password" name="retype-password" value="${retypePass}">
-              <span class="error-msg required" id="retype-password-error" style="display: none;"></span>
-              <span class="error-msg required" id="retype-mismatch-error" style="display: none;"></span>
-              <c:if test="${not empty error_checkNewAndRetypePass}">
-                <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
+              <textarea type="text" cols="65" rows="10" id="public-key" name="public-key" value="${publicKey}"></textarea>
+              <span class="error-msg required" id="public-key-error" style="display: none;"></span>
+              <c:if test="${not empty error_publicKey}">
+                <p style="color: red"> ${error_publicKey}</p>
               </c:if>
             </td>
           </tr>
         </table>
 
         <div class="btn-group">
-          <button type="submit" id="submit">
-            Cập nhật mật khẩu
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <path d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/>
-            </svg>
+          <button type="button" id="report-button" style="background: red">
+            Báo cáo
           </button>
 
-          <button type="reset">
-            Làm mới
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/>
-            </svg>
+          <button type="button" id="generate-key">
+            Sinh khóa
+          </button>
+
+          <button type="button" id="download-file">
+            Tải file
+          </button>
+
+          <button type="submit" id="save-changes" style="background: greenyellow">
+            Lưu thay đổi
           </button>
         </div>
         <c:if test="${not empty result}">
@@ -210,6 +181,7 @@
         </c:if>
       </form>
     </div>
+
   </div>
 </div>
 
@@ -227,80 +199,11 @@
 </div>
 
 <script>
-  // validate for input
-  var oldPass = document.getElementById("old-password");
-  var newPass = document.getElementById("new-password");
-  var retypePass = document.getElementById("retype-password");
-
-  function validateOldPassword() {
-    var text = document.getElementById("old-password").value;
-    var error = document.getElementById("old-password-error");
-
-    if (text.length === 0 || text === null) {
-      error.textContent = "Vui lòng nhập mật khẩu cũ";
-      error.style.display = "block";
-      return false;
-    } else {
-      error.style.display = "none";
-      return true;
-    }
-  }
-
-  function validateNewPassword() {
-    var text = document.getElementById("new-password").value;
-    var error = document.getElementById("new-password-error");
-
-    if (text.length === 0 || text === null) {
-      error.textContent = "Vui lòng nhập mật khẩu mới";
-      error.style.display = "block";
-      return false;
-    } else if (text.length < 6) {
-      error.textContent = "Mật khẩu mới phải chứa ít nhất 6 ký tự";
-      error.style.display = "block";
-      return false;
-    } else {
-      error.style.display = "none";
-      return true;
-    }
-  }
-
-  function validateRetypePassword() {
-    var newPassword = document.getElementById("new-password").value;
-    var retypePassword = document.getElementById("retype-password").value;
-    var retypeError = document.getElementById("retype-password-error");
-    var mismatchError = document.getElementById("retype-mismatch-error");
-
-    if (retypePassword.length === 0 || retypePassword === null) {
-      retypeError.textContent = "Vui lòng nhập lại mật khẩu mới.";
-      retypeError.style.display = "block";
-      mismatchError.style.display = "none";
-      return false;
-    } else if (newPassword !== retypePassword) {
-      retypeError.style.display = "none";
-      mismatchError.style.display = "block";
-      return false;
-    } else {
-      retypeError.style.display = "none";
-      mismatchError.style.display = "none";
-      return true;
-    }
-  }
-
-  // add event to check input
-  oldPass.addEventListener("blur", validateOldPassword);
-  newPass.addEventListener("blur", validateNewPassword);
-  retypePass.addEventListener("blur", validateRetypePassword);
-
-  // stop user send post to server
-  var submit = document.getElementById("submit");
-  submit.addEventListener("click", function (event) {
-    var isOldPass = validateOldPassword();
-    var isNewPass = validateNewPassword();
-    var isRetypePass = validateRetypePassword();
-    if (!isOldPass || !isNewPass || !isRetypePass) {
-      event.preventDefault();
-    }
-  })
+  const publicKeyInput = document.getElementById("private-key");
+  const generateKeyButton = document.getElementById("generate-key");
+  const reportButton = document.getElementById("report");
+  const downloadFileButton = document.getElementById("download-file");
+  const saveChangesButton = document.getElementById("save-changes");
 
 </script>
 
