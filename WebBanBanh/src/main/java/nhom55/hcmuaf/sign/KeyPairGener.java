@@ -35,7 +35,7 @@ public class KeyPairGener {
      * @return Cặp khóa RSA.
      * @throws NoSuchAlgorithmException Nếu thuật toán RSA không được hỗ trợ.
      */
-    private static KeyPair generateKeyPairInternal() throws NoSuchAlgorithmException {
+    public static KeyPair generateKeyPairInternal() throws NoSuchAlgorithmException {
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         keyGen.initialize(2048);
         return keyGen.generateKeyPair();
