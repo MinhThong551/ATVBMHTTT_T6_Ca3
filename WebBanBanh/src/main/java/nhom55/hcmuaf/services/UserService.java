@@ -53,6 +53,34 @@ public class UserService {
             newSexual, newStatus, newRole);
   }
 
+//  public String generateKeys(String userId) throws Exception {
+//    // Tạo cặp khóa
+//    KeyPair keyPair = KeyPairGen.generateKeyPair();
+//
+//    // Lấy publicKey
+//    String publicKey = KeyPairGen.getPublicKey(keyPair);
+//
+//    // Lấy privateKey
+//    String privateKey = KeyPairGen.getPrivateKey(keyPair);
+//
+//    // Lưu publicKey vào DB
+//    userDao.updatePublicKey(userId, publicKey);
+//
+//    // Gửi email với privateKey (cần có cấu hình gửi email)
+//    sendEmailWithPrivateKey(userId, privateKey);
+//
+//    return publicKey; // Trả về publicKey để hiển thị trên JSP
+//  }
+//
+//  private void sendEmailWithPrivateKey(String userId, String privateKey) {
+//    // Thực hiện gửi email cho user, sử dụng thư viện gửi email như JavaMail
+//    String email = getUserEmailById(userId); // Hàm này để lấy email từ cơ sở dữ liệu
+//    String subject = "Your Private Key";
+//    String message = "Here is your private key: " + privateKey;
+//
+//    // Gửi email (code gửi email sẽ cần cấu hình SMTP)
+//  }
+
   /**
    * update profile with img
    *
