@@ -150,9 +150,7 @@
               <label for="public-key">Khóa công khai<span class="not-empty"> *</span></label>
             </td>
             <td>
-                <textarea type="text" cols="65" rows="10" id="public-key" name="public-key">
-                  ${publicKey}
-                </textarea>
+              <textarea type="text" cols="65" rows="10" id="public-key" name="public-key">${publicKey}</textarea>
               <span class="error-msg required" id="public-key-error" style="display: none;"></span>
               <c:if test="${not empty error_publicKey}">
                 <p style="color: red"> ${error_publicKey}</p>
@@ -164,7 +162,8 @@
         <div class="btn-group">
           <button type="button" id="report-button" style="background: red">Báo cáo</button>
           <button type="submit" name="action" value="generate-key" id="generate-key">Sinh khóa</button>
-          <button type="button" id="download-file">Tải file</button>
+          <input type="file" id="file-input" style="display:none" />
+          <button type="button" id="download-file" onclick="document.getElementById('file-input').click();">Tải file</button>
           <button type="submit" name="action" value="save-key" id="save-changes" style="background: greenyellow">Lưu thay đổi</button>
         </div>
 
@@ -172,6 +171,24 @@
           <p style="color: red;padding: 30px"> ${result}</p>
         </c:if>
       </form>
+
+      <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+          var file = event.target.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+            var content = e.target.result;
+            document.getElementById('public-key').value = content;
+          };
+
+          if (file) {
+            reader.readAsText(file);
+          }
+        });
+      </script>
+
+
 
     </div>
 

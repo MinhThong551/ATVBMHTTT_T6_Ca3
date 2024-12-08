@@ -10,12 +10,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-
 @WebServlet(name = "updateKeyPairUser", value = "/page/user/update-key-pair")
 public class UpdateKeyPairUser extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,24 +53,57 @@ public class UpdateKeyPairUser extends HttpServlet {
     private void handleGenerateKey(HttpServletRequest request, HttpServletResponse response, Users user)
             throws ServletException, IOException {
         try {
-            // Generate key pair
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-            keyGen.initialize(2048);
-            KeyPair keyPair = keyGen.generateKeyPair();
+            String publicKey = request.getParameter("public-key");
 
-            // Lấy public key
-            String publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
+            if (publicKey != null && !publicKey.isEmpty()) {
+                // Nếu textarea có dữ liệu, kiểm tra xem đó có phải là public key hợp lệ không
+                try {
+                    // Giải mã public key từ Base64
+                    byte[] publicKeyBytes = Base64.getDecoder().decode(publicKey);
 
-            // Lưu public key vào request để hiển thị lại trên form
-            request.setAttribute("publicKey", publicKey);
+                    // Sử dụng KeyFactory để tạo PublicKey từ dữ liệu Base64
+                    KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+                    X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
+                    PublicKey pubKey = keyFactory.generatePublic(keySpec);
 
-            // Lưu public key và private key vào session (có thể sử dụng sau này nếu cần)
-            request.getSession().setAttribute("generatedPublicKey", publicKey);
-            String privateKey = Base64.getEncoder().encodeToString(keyPair.getPrivate().getEncoded());
-            request.getSession().setAttribute("generatedPrivateKey", privateKey);
+                    // Tạo private key tương ứng với public key
+                    KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+                    keyGen.initialize(2048);
+                    KeyPair keyPair = keyGen.generateKeyPair();
 
-            // Hiển thị thông báo kết quả
-            request.setAttribute("result", "Khóa đã được sinh thành công.");
+                    // Lưu public key vào request để hiển thị lại trên form
+                    request.setAttribute("publicKey", publicKey);
+
+                    // Lưu public key và private key vào session (có thể sử dụng sau này nếu cần)
+                    request.getSession().setAttribute("generatedPublicKey", publicKey);
+                    String privateKey = Base64.getEncoder().encodeToString(keyPair.getPrivate().getEncoded());
+                    request.getSession().setAttribute("generatedPrivateKey", privateKey);
+
+                    request.setAttribute("result", "Khóa đã được sinh thành công.");
+                } catch (Exception e) {
+                    request.setAttribute("result", "Dữ liệu không phải là public key hợp lệ.");
+                }
+            } else {
+                // Nếu textarea rỗng, tạo một cặp khóa mới
+                KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+                keyGen.initialize(2048);
+                KeyPair keyPair = keyGen.generateKeyPair();
+
+                // Lấy public key
+                publicKey = Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded());
+
+                // Lưu public key vào request để hiển thị lại trên form
+                request.setAttribute("publicKey", publicKey);
+
+                // Lưu public key và private key vào session (có thể sử dụng sau này nếu cần)
+                request.getSession().setAttribute("generatedPublicKey", publicKey);
+                String privateKey = Base64.getEncoder().encodeToString(keyPair.getPrivate().getEncoded());
+                request.getSession().setAttribute("generatedPrivateKey", privateKey);
+
+                // Hiển thị thông báo kết quả
+                request.setAttribute("result", "Khóa đã được sinh thành công.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("result", "Lỗi khi sinh khóa: " + e.getMessage());
@@ -80,18 +116,22 @@ public class UpdateKeyPairUser extends HttpServlet {
 
     private void handleSaveKey(HttpServletRequest request, HttpServletResponse response, Users user)
             throws ServletException, IOException {
-        String publicKey = (String) request.getSession().getAttribute("generatedPublicKey");
+        // Lấy giá trị khóa công khai từ textarea (public-key)
+        String publicKey = request.getParameter("public-key");
         String privateKey = (String) request.getSession().getAttribute("generatedPrivateKey");
 
-        if (publicKey == null || privateKey == null) {
-            request.setAttribute("result", "Vui lòng sinh khóa trước khi lưu.");
+        if (publicKey == null || publicKey.isEmpty() || privateKey == null) {
+            request.setAttribute("result", "Vui lòng nhập khóa công khai và sinh khóa trước khi lưu.");
             doGet(request, response);
             return;
         }
 
         try {
+            // Kiểm tra xem publicKey có phải là một Base64 hợp lệ không
+            byte[] publicKeyBytes = Base64.getDecoder().decode(publicKey);
+
+            // Nếu publicKey hợp lệ, tiến hành lưu publicKey vào cơ sở dữ liệu
             UsersDao userDao = new UsersDaoImpl();
-            // Lưu public key vào database
             boolean isUpdated = userDao.updatePublicKey(user.getId(), publicKey);
 
             if (isUpdated) {
@@ -104,6 +144,8 @@ public class UpdateKeyPairUser extends HttpServlet {
             } else {
                 request.setAttribute("result", "Lưu khóa thất bại. Vui lòng thử lại.");
             }
+        } catch (IllegalArgumentException e) {
+            request.setAttribute("result", "Khóa công khai không hợp lệ. Vui lòng kiểm tra lại.");
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("result", "Đã xảy ra lỗi: " + e.getMessage());
