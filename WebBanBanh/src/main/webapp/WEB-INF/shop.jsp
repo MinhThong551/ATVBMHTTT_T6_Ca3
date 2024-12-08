@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng trái cây</title>
+    <title>Cửa hàng bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -96,8 +96,8 @@
     <div class="container navbar-container">
         <div class="navbar-brand">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+                Bánh
+                </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -173,7 +173,7 @@
 <div id="toast">
 </div>
 <div class="hero-wrap hero-bread"
-     style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
+     style="background-image: url('/static/images/bg1_news.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -195,9 +195,9 @@
                             <input type="text" placeholder="Tên sản phẩm" id="product-name">
                             <select id="product-category">
                                 <option value="" selected>Tất cả sản phẩm</option>
-                                <option value="Trái cây Việt">Trái cây Việt</option>
-                                <option value="Trái cây Nhập">Trái cây Nhập</option>
-                                <option value="Quà Tặng Trái Cây">Quà Tặng Trái Cây</option>
+                                <option value="Trái cây Việt">Bánh Việt</option>
+                                <option value="Trái cây Nhập">Bánh  Nhập</option>
+                                <option value="Quà Tặng Trái Cây">Quà Tặng Bánh </option>
                             </select>
                             <button class="search-btn" id="search-btn-category">Tìm kiếm</button>
                             <button class="reset-btn" id="reset-btn-category">Cài đặt lại</button>
@@ -320,8 +320,8 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh  tươi ngon</h2>
+                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua bánh  lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
                         </li>

@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng trái cây</title>
+    <title>Cửa hàng bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -61,8 +61,8 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng Trái
-                Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng Bánh
+                </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +137,7 @@
 <div id="toast">
 </div>
 <div class="hero-wrap hero-bread"
-     style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
+     style="background-image: url('/static/images/bg1_news.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -185,16 +185,16 @@
                             </fieldset>
                             <fieldset style=" border: 2px solid #82ae46;">
                                 <legend style="width: 150px;font-size: 18px;">Lọc theo mùa</legend>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="springFilter" name="spring" value=""> Trái cây mùa xuân</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="summerFilter" name="summer" value=""> Trái cây mùa hạ</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="autumnFilter" name="autumn" value=""> Trái cây mùa thu</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="winterFilter" name="winter" value=""> Trái cây mùa đông</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="springFilter" name="spring" value=""> Bánh mùa xuân</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="summerFilter" name="summer" value=""> Bánh mùa hạ</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="autumnFilter" name="autumn" value=""> Bánh mùa thu</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="winterFilter" name="winter" value=""> Bánh  mùa đông</label>
                             </fieldset>
                             <fieldset style=" border: 2px solid #82ae46;">
                                 <legend style="width: 150px;font-size: 18px;">Lựa chọn khác</legend>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="localFilter" name="local" value=""> Trái cây trong nước</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="importedFilter" name="imported" value=""> Trái cây nhập khẩu</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="driedFilter" name="dried" value=""> Trái cây khô</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="localFilter" name="local" value=""> Bánh trong nước</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="importedFilter" name="imported" value=""> Bánh nhập khẩu</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="driedFilter" name="dried" value="">Bánh khô</label>
                             </fieldset>
                             <input style="margin-top: 5px" type="submit" value="Lọc">
                         </form>
@@ -310,8 +310,8 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh tươi ngon</h2>
+                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua bánh lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

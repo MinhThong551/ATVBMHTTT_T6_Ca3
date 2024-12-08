@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng trái cây</title>
+    <title>Cửa hàng bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -60,8 +60,8 @@
     <div class="container navbar-container">
         <div class="navbar-brand">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+                Bánh
+            </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,7 +138,7 @@
 <!-- END nav -->
 
 <div class="hero-wrap hero-bread"
-     style="background-image: url(/static/images/bg1.jpg);filter: brightness(0.8);">
+     style="background-image: url(/static/images/bg2_news.jpg);filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -164,7 +164,7 @@
             <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                 <div class="heading-section-bold mb-4 mt-md-5">
                     <div class="ml-md-0">
-                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng trái cây online, trang web
+                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng bánh online, trang web
                             của chúng tôi</h2>
                     </div>
                 </div>

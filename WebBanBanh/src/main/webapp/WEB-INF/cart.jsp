@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <fmt:setLocale value="vi_VN"/>
-    <title>Cửa hàng trái cây</title>
+    <title>Cửa hàng bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -58,8 +58,8 @@
     <div class="container navbar-container">
         <div class="navbar-brand">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+                Bánh
+                </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +134,7 @@
 <!-- END nav -->
 <div id="toast">
 </div>
-<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg1_news.jpg');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
