@@ -143,14 +143,16 @@
     <div class="container-child-right">
       <h4>Tạo khóa</h4>
       <hr style="border-top: 1px solid #000000;">
-      <form class="create-key" action="${pageContext.request.contextPath}/page/user/create-key" method="post">
+      <form class="create-key" action="${pageContext.request.contextPath}/page/user/update-key-pair" method="post">
         <table style="border-collapse: collapse; border: none;">
           <tr>
             <td>
               <label for="public-key">Khóa công khai<span class="not-empty"> *</span></label>
             </td>
             <td>
-              <textarea type="text" cols="65" rows="10" id="public-key" name="public-key" value="${publicKey}"></textarea>
+                <textarea type="text" cols="65" rows="10" id="public-key" name="public-key">
+                  ${publicKey}
+                </textarea>
               <span class="error-msg required" id="public-key-error" style="display: none;"></span>
               <c:if test="${not empty error_publicKey}">
                 <p style="color: red"> ${error_publicKey}</p>
@@ -160,26 +162,17 @@
         </table>
 
         <div class="btn-group">
-          <button type="button" id="report-button" style="background: red">
-            Báo cáo
-          </button>
-
-          <button type="button" id="generate-key">
-            Sinh khóa
-          </button>
-
-          <button type="button" id="download-file">
-            Tải file
-          </button>
-
-          <button type="submit" id="save-changes" style="background: greenyellow">
-            Lưu thay đổi
-          </button>
+          <button type="button" id="report-button" style="background: red">Báo cáo</button>
+          <button type="submit" name="action" value="generate-key" id="generate-key">Sinh khóa</button>
+          <button type="button" id="download-file">Tải file</button>
+          <button type="submit" name="action" value="save-key" id="save-changes" style="background: greenyellow">Lưu thay đổi</button>
         </div>
+
         <c:if test="${not empty result}">
           <p style="color: red;padding: 30px"> ${result}</p>
         </c:if>
       </form>
+
     </div>
 
   </div>

@@ -118,6 +118,17 @@ public class UsersDaoImpl implements UsersDao {
     });
   }
 
+  @Override
+  public boolean updatePublicKey(int userId, String publicKey) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createUpdate("UPDATE users SET publickey = :publicKey WHERE id = :userId")
+                    .bind("publicKey", publicKey)
+                    .bind("userId", userId)
+                    .execute() > 0 // Trả về true nếu ít nhất một hàng được cập nhật
+    );
+  }
+
+
   /**
    * @param email
    * @param hash
