@@ -9,6 +9,8 @@ import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.BillDao;
 import nhom55.hcmuaf.database.JDBIConnector;
+import nhom55.hcmuaf.security.DSA;
+import org.jdbi.v3.core.Jdbi;
 
 public class BillDaoImpl implements BillDao {
 
@@ -258,4 +260,14 @@ public class BillDaoImpl implements BillDao {
       System.out.println(b.toString());
     }
   }
+
+//  public static boolean verifySignatureBill(Bills bill, String publicKey) throws Exception {
+//    String bills_detail = getBillDetail(bill.getId()).toString();
+//    return DSA.verifyBill(bill.toString()+bills_detail, DSA.verifyPublicKey(publicKey), getBillSignature(bill.getId()));
+//  }
+//  public static List<Bill_detail> getBillDetail(int idBill) {
+//    Jdbi me = JDBIConnector.me();
+//    String query = "select id,idMovie,idBill,price,status from bills_detail where idBill=:idBill";
+//    return me.withHandle(handle -> handle.createQuery(query).bind("idBill", idBill).mapToBean(Bill_detail.class).list());
+//  }
 }
