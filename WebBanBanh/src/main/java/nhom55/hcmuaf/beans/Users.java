@@ -202,15 +202,13 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
   }
 
   public String getPublickey() {
-    return hash;
+    return publickey;
   }
 
   public void setPublickey(String hash) {
     this.publickey = publickey;
   }
-  public int getId() {
-    return id;
-  }
+  public int getId() {return id;}
 
   public void setId(int id) {
     this.id = id;
