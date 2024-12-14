@@ -139,6 +139,7 @@ public class CheckOut extends HttpServlet {
             absDAO.insert(log);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/page/bill/list-bill");
+            request.setAttribute("message", "Để đảm bảo đơn hàng của bạn không bị bất cứ sự cố gì hãy xác thực đơn hàng ở đây.");
             dispatcher.forward(request, response);
           } catch (Exception e) {
             System.out.println("SendEmail Error: " + e);

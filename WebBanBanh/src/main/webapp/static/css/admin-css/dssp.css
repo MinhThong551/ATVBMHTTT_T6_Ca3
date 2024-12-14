@@ -123,6 +123,28 @@
     text-align: center;
 }
 
+.is_verify {
+    color: #FFFFFF;
+    padding: 5px 0;
+    background-color: #2F903F;
+    border-radius: 20px;
+    text-align: center;
+}
+.no_verify {
+    color: #FFFFFF;
+    padding: 5px 0;
+    background-color: darkgrey;
+    border-radius: 20px;
+    text-align: center;
+}
+.has_changed {
+    color: #FFFFFF;
+    padding: 5px 0;
+    background-color: brown;
+    border-radius: 20px;
+    text-align: center;
+}
+
 /* user - list*/
 .active-account {
     color: #FFFFFF;

@@ -26,10 +26,11 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     private String note;
 
     private LocalDateTime creationTime;
+    private String verify;
 
 
 
-    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime) {
+    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify) {
 
         this.id = id;
         this.orderedDate = orderedDate;
@@ -47,6 +48,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
         this.deliveryFee =deliveryFee;
         this.note = note;
         this.creationTime = creationTime;
+        this.verify = verify;
 
     }
     public Bills() {
@@ -72,6 +74,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", deliveryFee=" + deliveryFee +
                 ", note='" + note + '\'' +
                 ", creationTime=" + creationTime +
+                ", verify=" + verify +
                 '}';
     }
 
@@ -202,6 +205,14 @@ public class Bills extends Log<Users> implements Serializable, IModel {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
     }
 
     @Override
