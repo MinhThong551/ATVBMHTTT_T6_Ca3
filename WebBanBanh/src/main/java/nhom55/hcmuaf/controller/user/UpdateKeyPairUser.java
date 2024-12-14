@@ -45,6 +45,8 @@ public class UpdateKeyPairUser extends HttpServlet {
             handleGenerateKey(request, response, user);
         } else if ("save-key".equals(action)) {
             handleSaveKey(request, response, user);
+        } else if ("delete-key".equals(action)) {
+            handleDeleteKey(request, response, user);
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Hành động không hợp lệ.");
         }
@@ -149,6 +151,25 @@ public class UpdateKeyPairUser extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("result", "Đã xảy ra lỗi: " + e.getMessage());
+        }
+
+        doGet(request, response);
+    }
+    private void handleDeleteKey(HttpServletRequest request, HttpServletResponse response, Users user)
+            throws ServletException, IOException {
+        // Xóa khóa công khai trong cơ sở dữ liệu
+        try {
+            UsersDao userDao = new UsersDaoImpl();
+            boolean isDeleted = userDao.deletePublicKey(user.getId());
+
+            if (isDeleted) {
+                request.setAttribute("result", "Khóa công khai đã được xóa.");
+            } else {
+                request.setAttribute("result", "Không thể xóa khóa công khai. Vui lòng thử lại.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("result", "Đã xảy ra lỗi khi xóa khóa: " + e.getMessage());
         }
 
         doGet(request, response);

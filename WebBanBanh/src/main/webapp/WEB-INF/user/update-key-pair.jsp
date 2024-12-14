@@ -173,6 +173,23 @@
       </form>
 
       <script>
+        // JavaScript để hiển thị hộp thoại xác nhận khi nhấn nút Báo cáo
+        document.getElementById('report-button').addEventListener('click', function(event) {
+          // Hiển thị hộp thoại xác nhận
+          var userConfirmed = confirm("Bạn có chắc chắn muốn xóa khóa công khai?");
+
+          // Nếu người dùng nhấn "OK", gửi yêu cầu xóa khóa công khai
+          if (userConfirmed) {
+            var form = document.querySelector('form');  // Lấy form hiện tại
+            var inputAction = document.createElement('input'); // Tạo một input ẩn mới
+            inputAction.type = 'hidden';
+            inputAction.name = 'action';  // Đặt tên cho action
+            inputAction.value = 'delete-key';  // Giá trị action là delete-key
+            form.appendChild(inputAction);  // Thêm input vào form
+            form.submit();  // Gửi form để thực hiện xóa khóa
+          }
+        });
+
         document.getElementById('file-input').addEventListener('change', function(event) {
           var file = event.target.files[0];
           var reader = new FileReader();

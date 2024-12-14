@@ -273,6 +273,7 @@
                         <th style="width: 150px;">Tổng tiền</th>
                         <th style="width: 150px;">Tình trạng</th>
                         <th style="width: 100px;"></th>
+                        <th style="width: 100px;">Xác thực</th>
                     </tr>
                     <c:forEach items="${listBills}" var="bill">
                         <tr style="background-color: #fff">
@@ -292,6 +293,9 @@
                                     </svg>
                                 </a>
 
+                            </td>
+                            <td>
+                                <div class="verify-status">${bill.getVerify()}</div>
                             </td>
                         </tr>
                     </c:forEach>
@@ -383,19 +387,31 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    let orderStatusList = document.querySelectorAll(".order-status");
+      let orderStatusList = document.querySelectorAll(".order-status");
+      orderStatusList.forEach(function (status) {
+          let statusText = status.innerHTML.toLowerCase().trim();
+          if (statusText === "đang xử lý") {
+              status.classList.add('processing-order');
+          } else if (statusText === "đang giao") {
+              status.classList.add('on-delivering');
+          } else if (statusText === "đã giao") {
+              status.classList.add('delivered');
+          } else if (statusText === "đã hủy") {
+              status.classList.add('cancelled');
+          }
+      });
 
-    orderStatusList.forEach(function (status) {
-      if (status.innerHTML.toLowerCase() === "đang xử lý") {
-        status.classList.add('processing-order');
-      } else if (status.innerHTML.toLowerCase() === "đang giao") {
-        status.classList.add('on-delivering');
-      } else if (status.innerHTML.toLowerCase() === "đã giao") {
-        status.classList.add('delivered');
-      } else if (status.innerHTML.toLowerCase() === "đã hủy") {
-        status.classList.add('cancelled');
-      }
-    });
+      let verifyStatusList = document.querySelectorAll(".verify-status");
+      verifyStatusList.forEach(function (status) {
+          let statusText = status.innerHTML.toLowerCase().trim();
+          if (statusText === "chưa xác thực") {
+              status.classList.add('no_verify');
+          } else if (statusText === "đã xác thực") {
+              status.classList.add('is_verify');
+          } else if (statusText === "đã thay đổi") {
+              status.classList.add('has_changed');
+          }
+      });
   });
 
 </script>
