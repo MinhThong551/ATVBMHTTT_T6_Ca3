@@ -27,4 +27,5 @@ public interface BillDao {
     public void updateStatusABill(int idBill, String status);
     public int getIdUser(int idBill);
 
+    public boolean saveSignature(int orderId, int userId, String signature);
 }

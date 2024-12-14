@@ -56,7 +56,7 @@
     text-align: center;
 }
 .quantity {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     text-align: center;
 }
 .ds-hoa-don-link {
@@ -72,4 +72,75 @@
 }
 .ds-hoa-don-link a:hover svg {
     fill: black;
+}
+/* Căn chỉnh form */
+#sign-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Tiêu đề của form */
+#sign-form h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Input file */
+#private-key-file {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+#private-key-file:hover,
+#private-key-file:focus {
+    border-color: #82ae46;
+}
+
+/* Nút bấm */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#btn-sign {
+    background-color: #82ae46;
+    color: white;
+}
+
+#btn-sign:hover {
+    background-color: #6fa038;
+    transform: scale(1.05);
+}
+
+#btn-create-signature {
+    background-color: #007bff;
+    color: white;
+}
+
+#btn-create-signature:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }

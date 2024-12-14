@@ -251,6 +251,17 @@ public class BillDaoImpl implements BillDao {
     });
   }
 
+  @Override
+  public boolean saveSignature(int orderId, int userId, String signature) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createUpdate("UPDATE bills SET signature = :signature WHERE id = :orderId AND userId = :userId")
+                    .bind("signature", signature)
+                    .bind("orderId", orderId)
+                    .bind("userId", userId)
+                    .execute() > 0 // Trả về true nếu ít nhất một hàng được cập nhật
+    );
+  }
+
   public static void main(String[] args) {
     BillDaoImpl billDao = new BillDaoImpl();
     List<BillDetails> billDetails = billDao.getListProductInABill(24);
