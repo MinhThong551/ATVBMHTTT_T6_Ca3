@@ -73,7 +73,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", totalPrice=" + totalPrice +
                 ", deliveryFee=" + deliveryFee +
                 ", note='" + note + '\'' +
-                ", creationTime=" + creationTime +
+                ", creationTime=" + creationTime + '\'' +
                 ", verify=" + verify +
                 '}';
     }

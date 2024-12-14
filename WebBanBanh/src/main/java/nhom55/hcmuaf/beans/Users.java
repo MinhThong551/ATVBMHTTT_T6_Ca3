@@ -21,6 +21,7 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
   private String sexual;
   private int role;
   private LocalDateTime creationTime;
+  private String publickey;
 
   public Users(String username, String password, String hash, String email, String address,
       String phoneNumber) {
@@ -150,7 +151,7 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
 
   public Users(int id, String username, String password, String hash, String email, String address,
       String phoneNumber, int status, String img, LocalDate dateOfBirth, String sexual, int role,
-      LocalDateTime creationTime) {
+      LocalDateTime creationTime,String publickey) {
     this.id = id;
     this.username = username;
     this.password = password;
@@ -164,6 +165,7 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
     this.sexual = sexual;
     this.role = role;
     this.creationTime = creationTime;
+    this.publickey = publickey;
   }
 
   public Users(String username, String password, String hash, String email, String address,
@@ -199,6 +201,13 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
     this.hash = hash;
   }
 
+  public String getPublickey() {
+    return hash;
+  }
+
+  public void setPublickey(String hash) {
+    this.publickey = publickey;
+  }
   public int getId() {
     return id;
   }
@@ -301,7 +310,8 @@ public class Users<T> extends Log<Users> implements Serializable, IModel {
         ", img='" + img + '\'' +
         ", dateOfBirth=" + dateOfBirth +
         ", sexual='" + sexual + '\'' +
-        ", role=" + role +
+        ", role=" + role + '\'' +
+            ", publickey=" + publickey +
         '}';
   }
 
