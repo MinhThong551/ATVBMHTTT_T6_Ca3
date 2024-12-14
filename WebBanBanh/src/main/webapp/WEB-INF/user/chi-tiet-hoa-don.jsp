@@ -124,16 +124,13 @@
                         <tr>
                             <td class="product-single">
                                 <a href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                         viewBox="0 0 512 512">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
                                     </svg>
                                 </a>
                             </td>
-                            <td class="img-default"
-                                data-assets="${product.getProducts().getImgPublicId()}">
-                                <img class="img-product"
-                                     src="${pageContext.request.contextPath}/static/images/loading-cat.gif">
+                            <td class="img-default" data-assets="${product.getProducts().getImgPublicId()}">
+                                <img class="img-product" src="${pageContext.request.contextPath}/static/images/loading-cat.gif">
                             </td>
                             <td>
                                 <div class="product-name">
@@ -147,20 +144,98 @@
                                 </div>
                             </td>
                             <td>${product.getTotalPrice()}</td>
-                            <c:set var="totalPrice"
-                                   value="${totalPrice + product.getTotalPrice()}"/>
+                            <c:set var="totalPrice" value="${totalPrice + product.getTotalPrice()}"/>
                         </tr>
                     </c:forEach>
-
                 </table>
             </div>
             <div style="position:relative; left:800px">
-                <span style="color:#82ae46; font-size:20px"> Tổng cộng:<fmt:formatNumber
-                        pattern="#,##0 ₫" value="${totalPrice}"/> </span>
+                <span style="color:#82ae46; font-size:20px"> Tổng cộng:<fmt:formatNumber pattern="#,##0 ₫" value="${totalPrice}"/> </span>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button id="btn-sign" style="background-color: #82ae46; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                    Xác nhận ký
+                </button>
+            </div>
+            <div id="sign-form" style="display: none; margin-top: 20px; text-align: center; border: 1px solid #ccc; padding: 20px; border-radius: 5px; width: 50%; margin: auto;">
+                <h3>Nhập Private Key để ký</h3>
+                <input type="file" id="private-key-file" accept=".txt" style="margin-bottom: 20px;">
+                <br>
+                <button id="btn-create-signature" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                    Tạo chữ ký
+                </button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    async function calculateHash(data) {
+        const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(data));
+        return Array.from(new Uint8Array(hashBuffer))
+            .map(byte => byte.toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    document.getElementById("btn-sign").addEventListener("click", function() {
+        const form = document.getElementById("sign-form");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    });
+
+    document.getElementById("btn-create-signature").addEventListener("click", async function () {
+        const fileInput = document.getElementById("private-key-file");
+
+        if (fileInput.files.length === 0) {
+            alert("Vui lòng chọn file!");
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = async function (e) {
+            const privateKey = e.target.result.trim();
+            const products = Array.from(document.querySelectorAll(".table-ds-hoa-don tr"))
+                .slice(1)
+                .map(row => {
+                    const cells = row.querySelectorAll("td");
+                    return {
+                        name: cells[0]?.innerText.trim(),
+                        price: cells[1]?.innerText.trim(),
+                        quantity: cells[2]?.innerText.trim(),
+                        total: cells[3]?.innerText.trim()
+                    };
+                });
+
+            const dataToHash = products.map(p => `${p.name}|${p.price}|${p.quantity}|${p.total}`).join(";");
+            const hash = await calculateHash(dataToHash);
+
+            // Không cần lấy lại idBills từ input hidden nữa vì servlet đã xử lý rồi
+            const formData = new FormData();
+            formData.append("privateKey", privateKey);
+            formData.append("hash", hash);
+
+            fetch('/page/bill/detail', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Chữ ký đã được tạo thành công!");
+                    } else {
+                        alert("Lỗi khi tạo chữ ký: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert("Có lỗi xảy ra: " + error);
+                });
+        };
+
+        reader.readAsText(file);
+    });
+
+
+</script>
 
 
 <!-- loader -->
