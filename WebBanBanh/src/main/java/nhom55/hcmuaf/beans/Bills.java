@@ -27,8 +27,9 @@ public class Bills extends Log<Users> implements Serializable, IModel {
 
     private LocalDateTime creationTime;
     private String verify;
+    private String billHash;
 
-    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify) {
+    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify,String billHash) {
 
         this.id = id;
         this.orderedDate = orderedDate;
@@ -47,7 +48,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
         this.note = note;
         this.creationTime = creationTime;
         this.verify = verify;
-
+        this.billHash = billHash;
     }
     public Bills() {
 
@@ -72,8 +73,9 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", deliveryFee=" + deliveryFee +
                 ", note='" + note + '\'' +
                 ", creationTime=" + creationTime + '\'' +
-                ", verify=" + verify +
-                '}';
+                ", verify=" + verify +'\'' +
+                ", billHash=" + billHash +
+        '}';
     }
 
     public int getId() {
@@ -211,6 +213,14 @@ public class Bills extends Log<Users> implements Serializable, IModel {
 
     public void setVerify(String verify) {
         this.verify = verify;
+    }
+
+    public String getBillHash() {
+        return billHash;
+    }
+
+    public void setBillHash(String billHash) {
+        this.billHash =billHash;
     }
 
     @Override
