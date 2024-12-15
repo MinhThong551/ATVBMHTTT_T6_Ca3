@@ -1,20 +1,26 @@
 package nhom55.hcmuaf.controller.page.bill;
 
 import nhom55.hcmuaf.beans.BillDetails;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.BillDao;
+import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.daoimpl.BillDaoImpl;
+import nhom55.hcmuaf.dao.daoimpl.UsersDaoImpl;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.Signature;
-import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.*;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.List;
+
+import org.apache.commons.codec.binary.Hex;
 
 @WebServlet(name = "billDetail", value = "/page/bill/detail")
 public class billDetail extends HttpServlet {
@@ -28,8 +34,22 @@ public class billDetail extends HttpServlet {
         BillDao orderDao = new BillDaoImpl();
         List<BillDetails> list = orderDao.getListProductInABill(idBill);
 
-        // Lưu danh sách sản phẩm vào request để hiển thị trong JSP
+        // Lấy chuỗi đặc điểm đơn hàng
+        BillDaoImpl billDaoImpl = new BillDaoImpl();
+        String billFeatures = billDaoImpl.getBillDetailsAsString(idBill);
+
+        // Tạo mã hash từ chuỗi đặc điểm đơn hàng
+        String billHash = null;
+        try {
+            billHash = generateSHA256Hash(billFeatures);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Lưu danh sách sản phẩm, chuỗi đặc điểm và hash vào request để hiển thị trong JSP
         request.setAttribute("list", list);
+        request.setAttribute("billFeatures", billFeatures);
+        request.setAttribute("billHash", billHash);
 
         // Lưu idBill vào session để sử dụng trong doPost
         HttpSession session = request.getSession();
@@ -42,75 +62,82 @@ public class billDetail extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Lấy idBill từ session
         HttpSession session = request.getSession();
         Integer idBill = (Integer) session.getAttribute("idBill");
-
-        // Kiểm tra xem idBill có tồn tại không
-        if (idBill == null) {
-            response.setContentType("application/json");
-            response.getWriter().write("{\"success\": false, \"message\": \"Không có idBill!\"}");
-            return;
-        }
-
-        // Lấy privateKey và hash từ request
-        String privateKey = request.getParameter("privateKey");
-        String hash = request.getParameter("hash");
-
-        // Kiểm tra xem privateKey và hash có đầy đủ không
-        if (privateKey == null || hash == null) {
-            response.setContentType("application/json");
-            response.getWriter().write("{\"success\": false, \"message\": \"Dữ liệu không đầy đủ!\"}");
-            return;
-        }
-
-        // Lấy userId từ session
+        Users user = (Users) session.getAttribute("user");
         Integer userId = (Integer) session.getAttribute("userId");
 
-        // Kiểm tra xem userId có tồn tại không
-        if (userId == null) {
-            response.setContentType("application/json");
-            response.getWriter().write("{\"success\": false, \"message\": \"User chưa đăng nhập!\"}");
+        if (idBill == null || userId == null) {
+            response.setContentType("text/html");
+            response.getWriter().write("<script>alert('Không có idBill hoặc userId!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
             return;
         }
 
+        String userSignature = request.getParameter("signature");
+        String billFeatures = request.getParameter("billFeatures");
+        String billHash;
+
+        // Lấy public key từ database dựa vào userId
+        UsersDao usersDao = new UsersDaoImpl();
+        String publicKeyString = usersDao.getPublicKeyByUserId(userId);
+
+        if (publicKeyString == null || publicKeyString.isEmpty()) {
+            response.setContentType("text/html");
+            response.getWriter().write("<script>alert('Người dùng chưa có public key!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
+            return;
+        }
         try {
-            // Xử lý ký chữ ký điện tử
-            String signature = signWithPrivateKey(privateKey, hash);
+            billHash = generateSHA256Hash(billFeatures);
+            PublicKey publicKey = decodePublicKey(publicKeyString);
 
-            // Lưu chữ ký vào cơ sở dữ liệu
-            BillDao orderDao = new BillDaoImpl();
-            boolean isSigned = orderDao.saveSignature(idBill, userId, signature);
+            // Verify the signature
+            // Sửa lại logic xác thực
+            boolean isVerified = verifySignature(billFeatures, userSignature, publicKey);
 
-            // Trả về kết quả
-            response.setContentType("application/json");
-            if (isSigned) {
-                response.getWriter().write("{\"success\": true}");
+            if (isVerified) {
+                response.setContentType("text/html");
+                response.getWriter().write("<script>alert('Chữ ký hợp lệ!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
             } else {
-                response.getWriter().write("{\"success\": false, \"message\": \"Lưu chữ ký thất bại!\"}");
+                response.setContentType("text/html");
+                response.getWriter().write("<script>alert('Chữ ký không hợp lệ!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
             }
+        } catch (NoSuchAlgorithmException e) {
+            response.setContentType("text/html");
+            response.getWriter().write("<script>alert('Lỗi tạo mã hash!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
         } catch (Exception e) {
-            e.printStackTrace();
-            response.setContentType("application/json");
-            response.getWriter().write("{\"success\": false, \"message\": \"Lỗi khi ký hóa đơn!\"}");
+            response.setContentType("text/html");
+            response.getWriter().write("<script>alert('Lỗi xác thực chữ ký!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
         }
     }
 
-    // Hàm ký hash với private key
-    private String signWithPrivateKey(String privateKey, String hash) throws Exception {
-        // Chuyển private key từ chuỗi sang đối tượng PrivateKey
-        byte[] keyBytes = Base64.getDecoder().decode(privateKey);
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
+    private String generateSHA256Hash(String input) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hashBytes = digest.digest(input.getBytes());
+        return Hex.encodeHexString(hashBytes);
+    }
+
+    private PublicKey decodePublicKey(String base64PublicKey) throws Exception {
+        byte[] publicKeyBytes = Base64.getDecoder().decode(base64PublicKey);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        PrivateKey key = keyFactory.generatePrivate(keySpec);
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
+        return keyFactory.generatePublic(keySpec);
+    }
 
-        // Ký dữ liệu hash
+
+
+// ...
+
+    private boolean verifySignature(String data, String base64Signature, PublicKey publicKey) throws Exception {
         Signature signature = Signature.getInstance("SHA256withRSA");
-        signature.initSign(key);
-        signature.update(hash.getBytes(StandardCharsets.UTF_8));
-        byte[] signedData = signature.sign();
+        signature.initVerify(publicKey);
 
-        // Trả về chữ ký dạng Base64
-        return Base64.getEncoder().encodeToString(signedData);
+        // Tạo hash của dữ liệu
+        byte[] dataHash = generateSHA256Hash(data).getBytes();
+
+        signature.update(dataHash);
+        byte[] signedData = Base64.getDecoder().decode(base64Signature);
+
+        // Xác minh chữ ký
+        return signature.verify(signedData);
     }
 }

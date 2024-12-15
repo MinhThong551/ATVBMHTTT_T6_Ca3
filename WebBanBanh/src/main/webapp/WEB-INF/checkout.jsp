@@ -252,7 +252,7 @@
                                           id="note_user" type="text" class="form-control"
                                           placeholder="Ghi chú" value="${noteUser}" rows="8"
                                           cols="10">
-                                      </textarea>
+                                </textarea>
                             </div>
                         </div>
                         <div class="col-md-6">

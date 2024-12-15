@@ -28,8 +28,6 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     private LocalDateTime creationTime;
     private String verify;
 
-
-
     public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify) {
 
         this.id = id;

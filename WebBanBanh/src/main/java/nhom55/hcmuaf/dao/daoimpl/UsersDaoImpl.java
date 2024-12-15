@@ -138,6 +138,17 @@ public class UsersDaoImpl implements UsersDao {
 
   }
 
+  @Override
+  public String getPublicKeyByUserId(int userId) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createQuery("SELECT publickey FROM users WHERE id = :userId")
+                    .bind("userId", userId)
+                    .mapTo(String.class)
+                    .findOne()
+                    .orElse(null)
+    );
+  }
+
 
   /**
    * @param email
