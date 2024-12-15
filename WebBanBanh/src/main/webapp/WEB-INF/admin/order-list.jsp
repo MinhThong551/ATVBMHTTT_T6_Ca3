@@ -344,6 +344,11 @@
             </div>
         </div>
     </section>
+    <form action="${pageContext.request.contextPath}/admin/order/order-list" method="POST">
+        <button type="submit" name="updateAll" style="margin-top: 20px;">Cập nhật tất cả</button>
+    </form>
+
+
 </div>
 <script>
   let arrow = document.querySelectorAll(".arrow");

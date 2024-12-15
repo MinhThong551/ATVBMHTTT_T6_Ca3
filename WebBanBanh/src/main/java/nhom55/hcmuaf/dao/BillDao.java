@@ -28,4 +28,13 @@ public interface BillDao {
     public int getIdUser(int idBill);
 
     public boolean saveSignature(int orderId, int userId, String signature);
+
+    public String getBillHashById(int idBill);
+
+   public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
+
+    public List<Bills> getAllBills();
+
+
+    public String getBillDetailsAsString(int idBill);
 }

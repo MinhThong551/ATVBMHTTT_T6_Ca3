@@ -250,11 +250,45 @@ public class BillDaoImpl implements BillDao {
     );
   }
 
+  @Override
+  public String getBillHashById(int idBill) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createQuery("SELECT billHash FROM bills WHERE id = :idBill")
+                    .bind("idBill", idBill)
+                    .mapTo(String.class)
+                    .findOnly()
+    );
+  }
+
+
+  @Override
+  public boolean updateBillVerifyStatus(int idBill, String verifyStatus) {
+    int rowsUpdated = JDBIConnector.get().withHandle(handle ->
+            handle.createUpdate("UPDATE bills SET verify = :verifyStatus WHERE id = :idBill")
+                    .bind("verifyStatus", verifyStatus)
+                    .bind("idBill", idBill)
+                    .execute()
+    );
+    return rowsUpdated > 0;  // Trả về true nếu có ít nhất 1 dòng bị ảnh hưởng
+  }
+
+
+  @Override
+  public List<Bills> getAllBills() {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createQuery("SELECT * FROM bills")
+                    .mapToBean(Bills.class)  // Chuyển kết quả thành danh sách đối tượng Bills
+                    .list()
+    );
+  }
+
+
   /**
    * Lấy chuỗi đặc điểm (dữ liệu tất cả các cột) của một đơn hàng, định dạng text và phân tách bằng dấu "-".
    * @param idBill ID của đơn hàng
    * @return Chuỗi chứa các đặc điểm của đơn hàng, hoặc null nếu không tìm thấy.
    */
+  @Override
   public String getBillDetailsAsString(int idBill) {
     try {
       Bills bill = getABill(idBill);

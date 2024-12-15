@@ -20,6 +20,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.List;
 
+import nhom55.hcmuaf.database.JDBIConnector;
 import org.apache.commons.codec.binary.Hex;
 
 @WebServlet(name = "billDetail", value = "/page/bill/detail")
@@ -88,15 +89,43 @@ public class billDetail extends HttpServlet {
         }
         try {
             billHash = generateSHA256Hash(billFeatures);
+            // Lưu billHash vào bảng bills
+            try {
+                JDBIConnector.get().withHandle(h ->
+                        h.createUpdate("UPDATE bills SET billHash = :billHash WHERE id = :idBill")
+                                .bind("billHash", billHash)
+                                .bind("idBill", idBill)
+                                .execute()
+                );
+            } catch (Exception e) {
+                response.setContentType("text/html");
+                response.getWriter().write("<script>alert('Lỗi lưu billHash vào database!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
+                return;
+            }
             PublicKey publicKey = decodePublicKey(publicKeyString);
 
             // Verify the signature
             // Sửa lại logic xác thực
             boolean isVerified = verifySignature(billFeatures, userSignature, publicKey);
 
+
             if (isVerified) {
-                response.setContentType("text/html");
-                response.getWriter().write("<script>alert('Chữ ký hợp lệ!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
+                // Cập nhật cột verify trong bảng bill
+                try {
+                    JDBIConnector.get().withHandle(h ->
+                            h.createUpdate("UPDATE bills SET verify = :verify WHERE id = :idBill")
+                                    .bind("verify", "đã xác thực")
+                                    .bind("idBill", idBill)
+                                    .execute()
+                    );
+
+                    response.setContentType("text/html");
+                    response.getWriter().write("<script>alert('Chữ ký hợp lệ và hóa đơn đã được xác thực!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
+                } catch (Exception e) {
+                    response.setContentType("text/html");
+                    response.getWriter().write("<script>alert('Lỗi cập nhật trạng thái hóa đơn!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
+                    return;
+                }
             } else {
                 response.setContentType("text/html");
                 response.getWriter().write("<script>alert('Chữ ký không hợp lệ!'); window.location.href='" + request.getContextPath() + "/page/bill/list-bill';</script>");
