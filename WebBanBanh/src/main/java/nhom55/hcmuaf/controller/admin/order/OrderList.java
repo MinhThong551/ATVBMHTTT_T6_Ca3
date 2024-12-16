@@ -62,31 +62,45 @@ public class OrderList extends HttpServlet {
             int idBill = bill.getId();
 
             // Lấy chi tiết hóa đơn
-            String billFeatures = billDao.getBillDetailsAsString(idBill);
+            String billn = billDao.getBillDetailsAsString(idBill);
+//            boolean update = billDao.updateBillFeatures(idBill, billn); // Cập nhật billFeatures vào DB
 
-            // Kiểm tra xem billFeatures có null hay không
-            if (billFeatures != null && !billFeatures.isEmpty()) {
+            // In giá trị bill_features ra console để kiểm tra
+            String currentBillFeatures = billDao.getBillFeature(idBill); // Lấy billFeatures mới nhất từ DB
+            System.out.println("billn: " + billn);  // In ra billn
+            System.out.println("currentBillFeatures: " + currentBillFeatures);  // In ra currentBillFeatures
+
+            // Kiểm tra xem billFeatures có thay đổi không
+            if (!currentBillFeatures.equals(billn)) {
+                System.out.println("Bill features updated for Bill ID: " + idBill);
+
                 try {
-                    String billHashNow = generateSHA256Hash(billFeatures);
+                    // Tính toán hash mới
+                    String billHashNow = generateSHA256Hash(billn);
+                    System.out.println("Hash now: " + billHashNow);  // In hash mới
 
                     // Lấy hash từ DB
                     String billHashStored = billDao.getBillHashById(idBill);
+                    System.out.println("Hash stored: " + billHashStored);  // In hash đã lưu
 
-                    // Xác định trạng thái xác thực
-                    String verifyStatus = billHashNow.equals(billHashStored) ? "đã xác thực" : "đã thay đổi";
-
-                    // Cập nhật trạng thái vào DB
-                    billDao.updateBillVerifyStatus(idBill, verifyStatus);
+                    // Kiểm tra nếu hash mới khác với hash đã lưu, cập nhật trạng thái
+                    if (!billHashNow.equals(billHashStored)) {
+                        String verifyStatus = "đã thay đổi"; // Trạng thái mới
+                        billDao.updateBillVerifyStatus(idBill, verifyStatus); // Cập nhật trạng thái
+                        System.out.println("Updated verification status for Bill ID: " + idBill);  // In trạng thái cập nhật
+                    } else {
+                        System.out.println("Bill hash unchanged for Bill ID: " + idBill);
+                    }
                 } catch (NoSuchAlgorithmException e) {
-                    // Xử lý lỗi nếu có (ví dụ: thông báo lỗi hoặc ghi log)
                     e.printStackTrace();
                 }
             } else {
-                // Nếu billFeatures là null hoặc rỗng, có thể ghi log hoặc xử lý theo yêu cầu
-                System.out.println("Bill details are empty for Bill ID: " + idBill);
+                System.out.println("Bill features unchanged for Bill ID: " + idBill);
             }
         }
     }
+
+
 
 
     private String generateSHA256Hash(String input) throws NoSuchAlgorithmException {

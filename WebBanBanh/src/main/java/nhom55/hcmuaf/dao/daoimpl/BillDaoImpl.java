@@ -282,6 +282,17 @@ public class BillDaoImpl implements BillDao {
     );
   }
 
+  @Override
+  public String getBillFeature(int idBill) {
+    return JDBIConnector.get().withHandle(h ->
+            h.createQuery("SELECT bill_features FROM bills WHERE id = :idBill")
+                    .bind("idBill", idBill)
+                    .mapTo(String.class) // Maps the result to a String (the billFeatures)
+                    .findOnly() // Fetches a single result
+    );
+  }
+
+
 
   /**
    * Lấy chuỗi đặc điểm (dữ liệu tất cả các cột) của một đơn hàng, định dạng text và phân tách bằng dấu "-".
@@ -297,11 +308,10 @@ public class BillDaoImpl implements BillDao {
       }
 
       // Tạo một chuỗi để chứa tất cả các đặc điểm, phân tách bằng dấu "-"
-      return String.format("%d-%s-%s-%s-%d-%d-%s-%s-%s-%s-%s-%s-%.2f-%s-%.2f-%s-%s",
+      return String.format("%d-%s-%s-%d-%d-%s-%s-%s-%s-%s-%s-%.2f-%.2f",
               bill.getId(),
               bill.getOrderedDate().toString(), // Chuyển LocalDateTime thành String
               bill.getProductList(),
-              bill.getStatus(),
               bill.getUserId(),
               bill.getPayment(),
               bill.getFirstName(),
@@ -311,16 +321,26 @@ public class BillDaoImpl implements BillDao {
               bill.getPhoneNumber(),
               bill.getEmail(),
               bill.getTotalPrice(),
-              bill.getCreationTime().toString(), // Chuyển LocalDateTime thành String
-              bill.getDeliveryFee(),
-              bill.getNote() == null ? "" : bill.getNote(),
-              bill.getVerify().toString()
+              bill.getDeliveryFee()
+
       );
     } catch (Exception e) {
       e.printStackTrace();
       return null; // Xử lý lỗi nếu có
     }
   }
+
+  public boolean updateBillFeatures(int idBill, String billFeatures) {
+    // Sử dụng JDBIConnector để thực thi truy vấn
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createUpdate("UPDATE bills SET bill_features = :billFeatures WHERE id = :idBill")
+                    .bind("billFeatures", billFeatures)  // Liên kết giá trị billFeatures
+                    .bind("idBill", idBill)              // Liên kết giá trị idBill
+                    .execute() > 0                       // Kiểm tra nếu ít nhất một hàng được cập nhật
+    );
+  }
+
+
 
   public static void main(String[] args) {
     BillDaoImpl billDao = new BillDaoImpl();

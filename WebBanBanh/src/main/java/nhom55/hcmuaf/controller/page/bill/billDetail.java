@@ -76,7 +76,7 @@ public class billDetail extends HttpServlet {
 
         String userSignature = request.getParameter("signature");
         String billFeatures = request.getParameter("billFeatures");
-        String billHash;
+        String billHash ;
 
         // Lấy public key từ database dựa vào userId
         UsersDao usersDao = new UsersDaoImpl();
@@ -92,8 +92,9 @@ public class billDetail extends HttpServlet {
             // Lưu billHash vào bảng bills
             try {
                 JDBIConnector.get().withHandle(h ->
-                        h.createUpdate("UPDATE bills SET billHash = :billHash WHERE id = :idBill")
+                        h.createUpdate("UPDATE bills SET billHash = :billHash , bill_features = :billFeatures WHERE id = :idBill")
                                 .bind("billHash", billHash)
+                                .bind("billFeatures", billFeatures)
                                 .bind("idBill", idBill)
                                 .execute()
                 );
