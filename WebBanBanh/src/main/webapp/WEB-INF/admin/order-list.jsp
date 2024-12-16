@@ -351,73 +351,73 @@
 
 </div>
 <script>
-  let arrow = document.querySelectorAll(".arrow");
-  let closeSideBarBtn = document.querySelector(".btn-close-home");
+    let arrow = document.querySelectorAll(".arrow");
+    let closeSideBarBtn = document.querySelector(".btn-close-home");
 
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement; // Trở về phần tử cha của mũi tên
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-
-    // Sau khi toggle sidebar, kiểm tra và điều chỉnh hiển thị nút đóng sidebar
-    if (!sidebar.classList.contains("close")) {
-      closeSideBarBtn.style.display = "inline-block"; // Hiển thị nút đóng
-    } else {
-      closeSideBarBtn.style.display = "none"; // Ẩn nút đóng
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement; // Trở về phần tử cha của mũi tên
+            arrowParent.classList.toggle("showMenu");
+        });
     }
-  });
 
-  closeSideBarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-    closeSideBarBtn.style.display = "none"; // Luôn ẩn nút đóng khi click để đóng sidebar
-  });
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
 
-  var myVar;
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
 
-  function myFunction() {
-    myVar = setTimeout(showPage, 800);
-  }
+        // Sau khi toggle sidebar, kiểm tra và điều chỉnh hiển thị nút đóng sidebar
+        if (!sidebar.classList.contains("close")) {
+            closeSideBarBtn.style.display = "inline-block"; // Hiển thị nút đóng
+        } else {
+            closeSideBarBtn.style.display = "none"; // Ẩn nút đóng
+        }
+    });
 
-  function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
-  }
+    closeSideBarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+        closeSideBarBtn.style.display = "none"; // Luôn ẩn nút đóng khi click để đóng sidebar
+    });
 
-  document.addEventListener('DOMContentLoaded', function () {
-      let orderStatusList = document.querySelectorAll(".order-status");
-      orderStatusList.forEach(function (status) {
-          let statusText = status.innerHTML.toLowerCase().trim();
-          if (statusText === "đang xử lý") {
-              status.classList.add('processing-order');
-          } else if (statusText === "đang giao") {
-              status.classList.add('on-delivering');
-          } else if (statusText === "đã giao") {
-              status.classList.add('delivered');
-          } else if (statusText === "đã hủy") {
-              status.classList.add('cancelled');
-          }
-      });
+    var myVar;
 
-      let verifyStatusList = document.querySelectorAll(".verify-status");
-      verifyStatusList.forEach(function (status) {
-          let statusText = status.innerHTML.toLowerCase().trim();
-          if (statusText === "chưa xác thực") {
-              status.classList.add('no_verify');
-          } else if (statusText === "đã xác thực") {
-              status.classList.add('is_verify');
-          } else if (statusText === "đã thay đổi") {
-              status.classList.add('has_changed');
-          }
-      });
-  });
+    function myFunction() {
+        myVar = setTimeout(showPage, 800);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let orderStatusList = document.querySelectorAll(".order-status");
+        orderStatusList.forEach(function (status) {
+            let statusText = status.innerHTML.toLowerCase().trim();
+            if (statusText === "đang xử lý") {
+                status.classList.add('processing-order');
+            } else if (statusText === "đang giao") {
+                status.classList.add('on-delivering');
+            } else if (statusText === "đã giao") {
+                status.classList.add('delivered');
+            } else if (statusText === "đã hủy") {
+                status.classList.add('cancelled');
+            }
+        });
+
+        let verifyStatusList = document.querySelectorAll(".verify-status");
+        verifyStatusList.forEach(function (status) {
+            let statusText = status.innerHTML.toLowerCase().trim();
+            if (statusText === "chưa xác thực") {
+                status.classList.add('no_verify');
+            } else if (statusText === "đã xác thực") {
+                status.classList.add('is_verify');
+            } else if (statusText === "đã thay đổi") {
+                status.classList.add('has_changed');
+            }
+        });
+    });
 
 </script>
 </body>

@@ -35,6 +35,7 @@ public interface BillDao {
 
     public List<Bills> getAllBills();
 
-
+    public String getBillFeature(int idBill);
     public String getBillDetailsAsString(int idBill);
+    public boolean updateBillFeatures(int idBill, String billFeatures);
 }
