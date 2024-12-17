@@ -53,6 +53,7 @@
           href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/user-css/chi-tiet-hoa-don.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .bill-info-container {
             display: flex;
@@ -126,6 +127,82 @@
         }
         .verify-button p a{
             text-decoration: none;
+        }
+
+        /* CSS cho nút Xác thực đơn */
+        .verify-order-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .verify-order-button:hover{
+            background-color: #45a049;
+        }
+
+        /* CSS cho form xác thực */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            max-width: 600px;
+            position: relative;
+            border-radius: 5px;
+
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-content .verify-button{
+            justify-content: center;
+        }
+
+        .verify-order-button.verified {
+            background-color: #cccccc; /* Màu nền nhạt hơn */
+            color: #666666; /* Màu chữ nhạt hơn */
+            cursor: default; /* Con trỏ chuột không đổi thành bàn tay */
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .modal-content #signatureForm .bill-info-container .bill-info input[type="text"] {
+            width: 95%; /* Chiều rộng gần bằng cửa sổ modal */
+            max-width: 550px; /* Giới hạn chiều rộng tối đa */
         }
     </style>
 
@@ -229,41 +306,54 @@
                     </c:forEach>
                 </table>
                 <div style="position:relative; left:800px">
-          <span style="color:#82ae46; font-size:20px">Tổng cộng: <fmt:formatNumber pattern="#,##0 ₫"
-                                                                                   value="${totalPrice}"/></span>
+                    <span style="color:#82ae46; font-size:20px">Tổng cộng: <fmt:formatNumber pattern="#,##0 ₫" value="${totalPrice}"/></span>
                 </div>
-
             </div>
-            <form id="signatureForm" method="post" action="${pageContext.request.contextPath}/page/bill/detail">
-                <div class="bill-info-container">
-                    <div class="bill-info">
-                        <p>Chuỗi đặc điểm:</p>
-                        <span id="billFeatures">${billFeatures}</span>
-                        <input type="hidden" name="billFeatures" value="${billFeatures}">
-                    </div>
-                    <div class="bill-info">
-                        <p>Mã Hash:</p>
-                        <span id="billHash">${billHash}</span>
-                        <span class="copy-button" onclick="copyToClipboard('#billHash')">
-                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                           <path d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256v-64h64v80c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zm272 64H144V480H288c17.7 0 32-14.3 32-32V192z"/>
-                      </svg>
-                  </span>
-                    </div>
 
-                    <div class="bill-info">
-                        <label for="signature">Chữ ký điện tử:</label>
-                        <input type="text" id="signature" name="signature">
-                    </div>
+            <div class="button-container">
+                <c:choose>
+                    <c:when test="${bill.verify == 'chưa xác thực'}">
+                        <button class="verify-order-button" id="openModal">Xác thực đơn hàng</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button class="verify-order-button verified" disabled>Đơn hàng đã được xác thực</button>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+            <div id="verificationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModal">×</span>
+                    <form id="signatureForm" method="post" action="${pageContext.request.contextPath}/page/bill/detail">
+                        <div class="bill-info-container">
+<%--                            <div class="bill-info">--%>
+<%--                                <p>Chuỗi đặc điểm:</p>--%>
+<%--                                <span id="billFeatures">${billFeatures}</span>--%>
+<%--                                <input type="hidden" name="billFeatures" value="${billFeatures}">--%>
+<%--                            </div>--%>
+                            <div class="bill-info">
+                                <p>Mã Hash:</p>
+                                <span id="billHash">${billHash}</span>
+                                <span class="copy-button" onclick="copyToClipboard('#billHash')">
+                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                             <path d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256v-64h64v80c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zm272 64H144V480H288c17.7 0 32-14.3 32-32V192z"/>
+                          </svg>
+                      </span>
+                            </div>
+
+                            <div class="bill-info">
+                                <label for="signature">Chữ ký điện tử:</label>
+                                <input type="text" id="signature" name="signature">
+                            </div>
+                        </div>
+
+                        <div class="verify-button">
+                            <button type="button" onclick="verifySignature()">Xác thực</button>
+                            <button type="button" onclick="cancelVerification()">Hủy</button>
+                        </div>
+                    </form>
                 </div>
-
-
-                <div class="verify-button">
-                    <button type="button" onclick="verifySignature()">Xác thực chữ ký</button>
-                    <button type="button" onclick="cancelVerification()">Hủy</button>
-                    <p><a href="#">Về trang chủ</a></p>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -317,8 +407,38 @@
     }
 
     function cancelVerification() {
-        // TODO: Implement cancel action, e.g., redirect to another page
-        window.location.href = "${pageContext.request.contextPath}/page/bill/list-bill";
+        closeModal() // Sửa thành gọi hàm đóng modal
+    }
+
+    // Lấy modal
+    var modal = document.getElementById("verificationModal");
+
+    // Lấy nút mở modal
+    var btn = document.getElementById("openModal");
+
+    // Lấy nút đóng modal
+    var span = document.getElementById("closeModal");
+
+    // Khi người dùng click vào nút, mở modal
+    if(btn){
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+    }
+
+    // Khi người dùng click vào nút đóng, đóng modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Khi người dùng click ra ngoài modal, đóng modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    function closeModal() {
+        modal.style.display = "none";
     }
 </script>
 

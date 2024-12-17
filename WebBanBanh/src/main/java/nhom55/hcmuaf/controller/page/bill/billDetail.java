@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.controller.page.bill;
 
 import nhom55.hcmuaf.beans.BillDetails;
+import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.BillDao;
 import nhom55.hcmuaf.dao.UsersDao;
@@ -38,6 +39,8 @@ public class billDetail extends HttpServlet {
         // Lấy chuỗi đặc điểm đơn hàng
         BillDaoImpl billDaoImpl = new BillDaoImpl();
         String billFeatures = billDaoImpl.getBillDetailsAsString(idBill);
+        Bills bill = billDaoImpl.getABill(idBill);
+        request.setAttribute("bill", bill);
 
         // Tạo mã hash từ chuỗi đặc điểm đơn hàng
         String billHash = null;
@@ -105,8 +108,6 @@ public class billDetail extends HttpServlet {
             }
             PublicKey publicKey = decodePublicKey(publicKeyString);
 
-            // Verify the signature
-            // Sửa lại logic xác thực
             boolean isVerified = verifySignature(billFeatures, userSignature, publicKey);
 
 
@@ -152,10 +153,6 @@ public class billDetail extends HttpServlet {
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
         return keyFactory.generatePublic(keySpec);
     }
-
-
-
-// ...
 
     private boolean verifySignature(String data, String base64Signature, PublicKey publicKey) throws Exception {
         Signature signature = Signature.getInstance("SHA256withRSA");
