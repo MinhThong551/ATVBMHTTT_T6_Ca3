@@ -173,6 +173,46 @@
       </form>
 
       <script>
+        // Lưu thời gian của lần nhấn cuối cùng
+        var lastActionTime = localStorage.getItem('lastActionTime') || 0;
+        var actionCooldown = 5 * 60 * 1000; // 5 phút (5000ms)
+
+        // Hàm kiểm tra cooldown
+        function isCooldownPeriod() {
+          var currentTime = new Date().getTime();
+          return currentTime - lastActionTime < actionCooldown;
+        }
+
+        // Hàm để cập nhật thời gian của lần nhấn
+        function updateLastActionTime() {
+          lastActionTime = new Date().getTime();
+          localStorage.setItem('lastActionTime', lastActionTime);
+        }
+
+        // Nút Báo cáo (delete-key)
+        document.getElementById('report-button').addEventListener('click', function(event) {
+          // Kiểm tra xem có đang trong thời gian chờ (cooldown) không
+          if (isCooldownPeriod()) {
+            alert("Bạn phải đợi 5 phút trước khi thực hiện lại.");
+            return;
+          }
+
+          // Hiển thị hộp thoại xác nhận
+          var userConfirmed = confirm("Bạn có chắc chắn muốn xóa khóa công khai?");
+
+          // Nếu người dùng nhấn "OK", gửi yêu cầu xóa khóa công khai
+          if (userConfirmed) {
+            var form = document.querySelector('form');  // Lấy form hiện tại
+            var inputAction = document.createElement('input'); // Tạo một input ẩn mới
+            inputAction.type = 'hidden';
+            inputAction.name = 'action';  // Đặt tên cho action
+            inputAction.value = 'delete-key';  // Giá trị action là delete-key
+            form.appendChild(inputAction);  // Thêm input vào form
+            form.submit();  // Gửi form để thực hiện xóa khóa
+            updateLastActionTime();  // Cập nhật thời gian của lần nhấn
+          }
+        });
+
         document.getElementById('file-input').addEventListener('change', function(event) {
           var file = event.target.files[0];
           var reader = new FileReader();

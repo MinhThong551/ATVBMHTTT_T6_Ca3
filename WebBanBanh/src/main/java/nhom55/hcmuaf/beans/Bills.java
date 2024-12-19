@@ -26,10 +26,10 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     private String note;
 
     private LocalDateTime creationTime;
-
-
-
-    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime) {
+    private String verify;
+    private String billHash;
+    private String billFeatures;
+    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify,String billHash,String billFeatures) {
 
         this.id = id;
         this.orderedDate = orderedDate;
@@ -47,7 +47,9 @@ public class Bills extends Log<Users> implements Serializable, IModel {
         this.deliveryFee =deliveryFee;
         this.note = note;
         this.creationTime = creationTime;
-
+        this.verify = verify;
+        this.billHash = billHash;
+        this.billFeatures=billFeatures;
     }
     public Bills() {
 
@@ -72,9 +74,13 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", totalPrice=" + totalPrice +
                 ", deliveryFee=" + deliveryFee +
                 ", note='" + note + '\'' +
-                ", creationTime=" + creationTime +
-                ", publicKey='" + publicKey + '\'' +
-                '}';
+
+                ", creationTime=" + creationTime + '\'' +
+                ", verify=" + verify +'\'' +
+                ", billHash=" + billHash +'\'' +
+                ", billFeatures=" + billFeatures +
+        '}';
+
     }
     public String getPublicKey() {
         return publicKey;
@@ -211,6 +217,29 @@ public class Bills extends Log<Users> implements Serializable, IModel {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
+    }
+
+    public String getBillHash() {
+        return billHash;
+    }
+
+    public void setBillHash(String billHash) {
+        this.billHash =billHash;
+    }
+    public String getBillFeatures() {
+        return billFeatures;
+    }
+
+    public void setBillFeatures(String billFeatures) {
+        this.billFeatures =billFeatures;
     }
 
     @Override

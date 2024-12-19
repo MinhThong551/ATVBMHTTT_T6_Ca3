@@ -27,4 +27,15 @@ public interface BillDao {
     public void updateStatusABill(int idBill, String status);
     public int getIdUser(int idBill);
 
+    public boolean saveSignature(int orderId, int userId, String signature);
+
+    public String getBillHashById(int idBill);
+
+   public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
+
+    public List<Bills> getAllBills();
+
+    public String getBillFeature(int idBill);
+    public String getBillDetailsAsString(int idBill);
+    public boolean updateBillFeatures(int idBill, String billFeatures);
 }
