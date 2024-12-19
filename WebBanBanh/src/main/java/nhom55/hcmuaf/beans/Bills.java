@@ -22,7 +22,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     private String email;
     private double totalPrice;
     private double deliveryFee;
-    private String publicKey;
+
     private String note;
 
     private LocalDateTime creationTime;
@@ -55,7 +55,6 @@ public class Bills extends Log<Users> implements Serializable, IModel {
 
     }
 
-
     @Override
     public String toString() {
         return "Bills{" +
@@ -74,20 +73,11 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", totalPrice=" + totalPrice +
                 ", deliveryFee=" + deliveryFee +
                 ", note='" + note + '\'' +
-
                 ", creationTime=" + creationTime + '\'' +
                 ", verify=" + verify +'\'' +
                 ", billHash=" + billHash +'\'' +
                 ", billFeatures=" + billFeatures +
-        '}';
-
-    }
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
+                '}';
     }
 
     public int getId() {

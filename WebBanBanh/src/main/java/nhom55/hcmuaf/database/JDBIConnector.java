@@ -26,11 +26,7 @@ public class JDBIConnector {
     jdbi = Jdbi.create(dataSource);
     jdbi.installPlugin(new SqlObjectPlugin());
   }
-  public static Jdbi me() {
-    if (jdbi == null)
-      makeConnect();
-    return jdbi;
-  }
+
 
   private JDBIConnector() {
   }
@@ -50,6 +46,3 @@ public class JDBIConnector {
 //        System.out.println(users);
   }
 }
-
-
-
