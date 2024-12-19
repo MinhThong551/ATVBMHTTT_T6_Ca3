@@ -87,8 +87,30 @@
     margin-right: 250px;
   }
 
+  .btn-group {
+    margin-left: 150px; /* Dịch chuyển sang phải 50px */
+  }
+
   .nav-item dropdown {
     margin-left: 250px;
+  }
+
+  #download-crypto-tools {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Màu xanh lá */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  #download-crypto-tools:hover {
+    background-color: #367c39; /* Màu xanh lá đậm hơn khi hover */
+  }
+
+  .download-button-container {
+    text-align: center;
   }
 </style>
 <!-- END nav -->
@@ -165,6 +187,9 @@
           <input type="file" id="file-input" style="display:none" />
           <button type="button" id="download-file" onclick="document.getElementById('file-input').click();">Tải file</button>
           <button type="submit" name="action" value="save-key" id="save-changes" style="background: greenyellow">Lưu thay đổi</button>
+        </div>
+        <div class="download-button-container">
+          <a type="button" id="download-crypto-tools" download href="WebBanBanh/src/main/webapp/CryptoTools.jar">Tải xuống CryptoTools.exe</a>
         </div>
 
         <c:if test="${not empty result}">
