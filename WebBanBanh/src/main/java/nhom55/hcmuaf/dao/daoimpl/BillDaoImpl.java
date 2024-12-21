@@ -340,6 +340,18 @@ public class BillDaoImpl implements BillDao {
     );
   }
 
+  @Override
+  public String getEmailByBillId(int billId) {
+      return JDBIConnector.get().withHandle(handle ->
+              handle.createQuery("SELECT email FROM bills WHERE id = :billId")
+                      .bind("billId", billId)
+                      .mapTo(String.class)
+                      .findOne()
+                      .orElse(null)
+      );
+    }
+
+
 
 
   public static void main(String[] args) {

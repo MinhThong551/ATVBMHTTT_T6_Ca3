@@ -342,13 +342,40 @@
                     </c:if>
                 </c:if>
             </div>
+            <div class="form-container">
+                <form action="${pageContext.request.contextPath}/admin/order/order-list" method="POST">
+                    <button type="submit" name="updateAll">Cập nhật tất cả</button>
+                </form>
+            </div>
         </div>
     </section>
-    <form action="${pageContext.request.contextPath}/admin/order/order-list" method="POST">
-        <button type="submit" name="updateAll" style="margin-top: 20px;">Cập nhật tất cả</button>
-    </form>
 
+    <style>
+        /* Căn giữa form */
+        .form-container {
+            margin-left: 35px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Độ cao chiếm toàn bộ màn hình */
+        }
 
+        /* Styling cơ bản cho button */
+        form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </div>
 <script>
     let arrow = document.querySelectorAll(".arrow");
