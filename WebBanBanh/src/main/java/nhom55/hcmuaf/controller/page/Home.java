@@ -27,7 +27,7 @@ public class Home extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     productService = new ProductService();
     productService.begin();
     // Dẫn đến đường link trang chủ hiển thị ra 8 sản phẩm
@@ -50,7 +50,7 @@ public class Home extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
 
   }
 
