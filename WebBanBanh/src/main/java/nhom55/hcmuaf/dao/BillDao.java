@@ -38,4 +38,5 @@ public interface BillDao {
     public String getBillFeature(int idBill);
     public String getBillDetailsAsString(int idBill);
     public boolean updateBillFeatures(int idBill, String billFeatures);
+    public String getEmailByBillId(int billId);
 }

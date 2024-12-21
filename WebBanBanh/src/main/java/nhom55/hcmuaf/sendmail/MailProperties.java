@@ -21,6 +21,7 @@ public class MailProperties {
         properties.put ("mail.smtp.port", getMailPort ());
         properties.put ("mail.smtp.auth", getMailAuth ());
         properties.put ("mail.smtp.starttls.enable", getMailStarttls ());
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         return properties;
     }
     public static String getMailHost() {

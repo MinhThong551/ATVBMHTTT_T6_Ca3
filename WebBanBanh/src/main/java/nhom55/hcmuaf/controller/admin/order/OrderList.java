@@ -4,6 +4,7 @@ import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.BillDao;
 import nhom55.hcmuaf.dao.daoimpl.BillDaoImpl;
+import nhom55.hcmuaf.util.EmailUtil;
 import nhom55.hcmuaf.util.MyUtils;
 import org.apache.commons.codec.binary.Hex;
 
@@ -13,7 +14,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet(name = "OrderList", value = "/admin/order/order-list")
 public class OrderList extends HttpServlet {
@@ -55,39 +58,42 @@ public class OrderList extends HttpServlet {
         doGet(request, response);
     }
 
+    private final Set<Integer> sentEmailBills = new HashSet<>(); // Lưu các hóa đơn đã gửi email
+
     private void updateAllBills(BillDao billDao) {
-        // Lấy tất cả hóa đơn
         List<Bills> listBills = billDao.getAllBills();
         for (Bills bill : listBills) {
             int idBill = bill.getId();
 
-            // Lấy chi tiết hóa đơn
             String billn = billDao.getBillDetailsAsString(idBill);
-//            boolean update = billDao.updateBillFeatures(idBill, billn); // Cập nhật billFeatures vào DB
+            String currentBillFeatures = billDao.getBillFeature(idBill);
 
-            // In giá trị bill_features ra console để kiểm tra
-            String currentBillFeatures = billDao.getBillFeature(idBill); // Lấy billFeatures mới nhất từ DB
-            System.out.println("billn: " + billn);  // In ra billn
-            System.out.println("currentBillFeatures: " + currentBillFeatures);  // In ra currentBillFeatures
-
-            // Kiểm tra xem billFeatures có thay đổi không
             if (!currentBillFeatures.equals(billn)) {
-                System.out.println("Bill features updated for Bill ID: " + idBill);
-
                 try {
-                    // Tính toán hash mới
                     String billHashNow = generateSHA256Hash(billn);
-                    System.out.println("Hash now: " + billHashNow);  // In hash mới
-
-                    // Lấy hash từ DB
                     String billHashStored = billDao.getBillHashById(idBill);
-                    System.out.println("Hash stored: " + billHashStored);  // In hash đã lưu
 
-                    // Kiểm tra nếu hash mới khác với hash đã lưu, cập nhật trạng thái
                     if (!billHashNow.equals(billHashStored)) {
-                        String verifyStatus = "đã thay đổi"; // Trạng thái mới
-                        billDao.updateBillVerifyStatus(idBill, verifyStatus); // Cập nhật trạng thái
-                        System.out.println("Updated verification status for Bill ID: " + idBill);  // In trạng thái cập nhật
+                        String verifyStatus = "đã thay đổi";
+                        billDao.updateBillVerifyStatus(idBill, verifyStatus);
+                        billDao.updateStatusABill(idBill, "Đã hủy");
+
+                        // Kiểm tra xem hóa đơn đã được gửi email chưa
+                        if (!sentEmailBills.contains(idBill)) {
+                            String userEmail = billDao.getEmailByBillId(idBill);
+                            String subject = "Thông báo: Đơn hàng đã bị hủy";
+                            String message = "Đơn hàng của bạn đã bị hủy và tiền sẽ được hoàn trả về tài khoản trong vòng 24 giờ. Xem chi tiết đơn hàng tại: \"\n" +
+                                    "      \"http://localhost:8080/page/bill/list-bill ";
+
+                            // Gửi email
+                            EmailUtil.sendNotificationEmail(userEmail, subject, message);
+                            System.out.println("Notification email sent to: " + userEmail);
+
+                            // Thêm hóa đơn vào danh sách đã gửi email
+                            sentEmailBills.add(idBill);
+                        } else {
+                            System.out.println("Email already sent for Bill ID: " + idBill);
+                        }
                     } else {
                         System.out.println("Bill hash unchanged for Bill ID: " + idBill);
                     }
@@ -99,7 +105,6 @@ public class OrderList extends HttpServlet {
             }
         }
     }
-
 
 
 
