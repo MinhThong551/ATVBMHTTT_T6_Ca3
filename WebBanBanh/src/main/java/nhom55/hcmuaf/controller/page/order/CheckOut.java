@@ -12,6 +12,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -114,10 +115,12 @@ public class CheckOut extends HttpServlet {
             message.addHeader("Content-type", "text/HTML; charset=UTF-8");
             message.setFrom(new InternetAddress(MailProperties.getEmail()));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setSubject("ĐẶT HÀNG");
-            message.setText(
-                    "Đơn đặt hàng của bạn đã thành công. Xem chi tiết đơn hàng tại: "
-                            + "http://localhost:8080/page/bill/detail?idBills=" + id_bills);
+            message.setSubject(MimeUtility.encodeText("ĐẶT HÀNG", "UTF-8", "B"));
+
+            String body = "Đơn đặt hàng của bạn đã thành công. Xem chi tiết đơn hàng tại: "
+                    + "http://localhost:8080/page/bill/detail?idBills=" + id_bills;
+            message.setContent(body, "text/plain; charset=UTF-8");
+
             Transport.send(message);
 
             // Logging đặt hàng thành công
