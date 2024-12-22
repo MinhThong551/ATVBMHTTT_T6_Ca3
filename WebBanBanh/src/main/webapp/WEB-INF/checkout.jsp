@@ -255,6 +255,13 @@
                                 </textarea>
                             </div>
                         </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary py-3 px-4" onclick="redirectToJspPage()">Hướng dẫn xác thực đơn hàng</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
 
@@ -427,8 +434,8 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh tươi ngon</h2>
+                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua bánh lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
                         </li>
@@ -704,6 +711,11 @@
   });
 
 
+</script>
+<script type="text/javascript">
+    function redirectToJspPage() {
+        window.location.href = 'huongdan'; // Chuyển hướng đến trang bạn muốn
+    }
 </script>
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>

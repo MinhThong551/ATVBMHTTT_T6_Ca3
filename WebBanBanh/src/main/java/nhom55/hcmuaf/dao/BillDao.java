@@ -31,7 +31,7 @@ public interface BillDao {
 
     public String getBillHashById(int idBill);
 
-   public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
+    public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
 
     public List<Bills> getAllBills();
 

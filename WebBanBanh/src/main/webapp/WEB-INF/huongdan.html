@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Sử Dụng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px; /* Chiều rộng tối đa của trang */
+            margin: 0 auto;   /* Căn giữa theo chiều ngang */
+            padding-left: 20px; /* Khoảng cách cách lề trái */
+            padding-right: 20px; /* Khoảng cách cách lề phải */
+            background-color: #fff; /* Nền trắng cho dễ nhìn */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ */
+            border-radius: 8px; /* Góc bo tròn */
+        }
+
+        h1, h2 {
+            text-align: center; /* Căn giữa riêng hai thẻ h1 và h2 */
+            color: #2c3e50;
+        }
+
+        h1 {
+            color: #1bc31b; /* Đổi màu cho Cửa hàng bánh thành màu xanh lá */
+        }
+
+        h2 {
+            color: #1bc31b; /* Đổi màu cho Hướng dẫn xác thực đơn hàng thành màu xanh lá */
+        }
+
+        ol {
+            line-height: 1.8;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .step {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .step h2 {
+            text-align: left; /* Đảm bảo các tiêu đề của các bước cũng căn lề trái */
+        }
+        .step img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Định vị liên kết quay về trang thanh toán */
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            color: #2c3e50;
+            text-decoration: none;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #ddd;
+        }
+        /* Định vị button quay về trang thanh toán */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            color: #fff; /* Màu chữ trắng */
+            background-color: #2c3e50; /* Màu nền nút */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #16a085; /* Màu nền khi hover */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container" >
+    <!-- Liên kết quay về trang thanh toán thành button -->
+    <button onclick="window.location.href='http://localhost:8080/page/order/check-out'" class="back-button">Quay về trang thanh toán</button>
+
+
+    <!-- Các tiêu đề được căn giữa -->
+    <h1>CỬA HÀNG BÁNH </h1>
+    <h2>Hướng dẫn xác thực đơn hàng</h2>
+
+    <ol>
+        <li class="step">
+            <h2>Bước 1: Tạo khóa và lưu khóa</h2>
+            <p>Sau khi tạo đơn hành thành công , quý khách vui lòng vào email để xác thực đơn hàng ,tạo khóa và lưu khóa  trên trang chủ của hệ thống </p>
+            <img src="/static/images/buoc1.jpg" alt="Đăng nhập vào hệ thống">
+        </li>
+
+        <li class="step">
+            <h2>Bước 2:Mở công cụ ký chữ ký điện tự </h2>
+            <p>Khách hàng điền dữ liệu cần ký , và lấy khóa riêng đã gửi đến email</p>
+            <img src="/static/images/buoc2.jpg" alt="Chọn tính năng">
+        </li>
+
+        <li class="step">
+            <h2>Bước 3: Nhập chữ ký và bấm xác thực</h2>
+            <p>Nhập chữ ký điện tử và bấm nút xác thực đơn hàng </p>
+            <img src="/static/images/buoc3.jpg" alt="Nhập dữ liệu vào form">
+        </li>
+
+        <li class="step">
+            <h2>Bước 4: Đơn hàng đã được xác thực thành công </h2>
+            <p>Khách hàng sau ký thành công đơn hàng , trang chủ hiện ra đã xác thực đơn hàng thành công </p>
+            <img src="/static/images/buoc4.jpg" alt="Kiểm tra thông tin">
+        </li>
+
+
+    </ol>
+</div>
+
+</body>
+</html>

@@ -156,7 +156,7 @@
                     <form style="position: relative; top:-40px; left: 350px"
                           action="${pageContext.request.contextPath}/page/shop/shop-controller?index=1" method="post">
                         <input style="width: 300px" type="text"
-                               placeholder="Tìm trái cây mà bạn cần" name="txtSearch">
+                               placeholder="Tìm bánh mà bạn cần" name="txtSearch">
                         <input style="width: 100px" type="submit" value="Tìm kiếm">
                     </form>
                     <%--                    html của filter --%>

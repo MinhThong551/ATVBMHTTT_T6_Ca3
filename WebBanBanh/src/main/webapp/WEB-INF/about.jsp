@@ -171,14 +171,14 @@
                 <div class="pb-md-5">
                     <p>Dù Việt Nam có một nền kinh tế nông nghiệp phát triển, nhưng việc tiếp cận và
                         mua,
-                        sắm trái cây tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với
+                        sắm bánh tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với
                         người tiêu dùng.
                         Để đáp ứng nhu cầu ngày càng cao của khách hàng về sự thuận tiện và đảm bảo
                         chất lượng,
                         trang web của chúng tôi xuất hiện để phục vụ nhu cầu cho bạn.
                     </p>
                     <p>Bạn có thể dễ dàng chọn lựa sản phẩm mà họ muốn, đặt hàng trực tuyến và
-                        nhận được những quả trái cây tươi sức sống được giao hàng tận nơi. Ngoài ra,
+                        nhận được những quả bánh thơm ngon sức sống được giao hàng tận nơi. Ngoài ra,
                         chúng tôi
                         thường xuyên cập nhật các ưu đãi, khuyến mãi và chính sách hỗ trợ
                         khách hàng, tạo ra một trải nghiệm mua sắm trực tuyến an tâm và tiện
@@ -211,10 +211,10 @@
                     </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua trái cây qua một
+                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua bánh qua một
                                     trang web ở Việt Nam và rất hài lòng với
                                     chất lượng sản phẩm. Trang web cung cấp thông tin chi tiết về
-                                    nguồn gốc và quy trình chăm sóc trái cây,
+                                    nguồn gốc và quy trình chăm sóc bánh,
                                     giúp tôi chọn lựa được những sản phẩm tươi ngon và an toàn. Quá
                                     trình đặt hàng và thanh toán đơn giản, và tôi nhận được giao
                                     hàng đúng
@@ -235,10 +235,10 @@
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Đã lâu tôi không tin tưởng mua trái cây trực tuyến, nhưng sau
-                                    khi thử nghiệm một trang web bán trái cây ở Việt Nam,
+                                    Đã lâu tôi không tin tưởng mua bánh trực tuyến, nhưng sau
+                                    khi thử nghiệm một trang web bán bánh ở Việt Nam,
                                     tôi đã hoàn toàn thay đổi quan điểm. Sự đa dạng của sản phẩm và
-                                    mô tả chi tiết giúp tôi lựa chọn được những loại trái cây ngon
+                                    mô tả chi tiết giúp tôi lựa chọn được những loại bánh ngon
                                     nhất.
                                     Giao hàng nhanh chóng và sản phẩm đến tay tôi vẫn giữ được độ
                                     tươi ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang
@@ -259,13 +259,13 @@
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Trải nghiệm mua sắm trái cây trực tuyến tại một trang web ở Việt
+                                    Trải nghiệm mua sắm bánh trực tuyến tại một trang web ở Việt
                                     Nam đã mang lại cho tôi sự tiện lợi và an tâm.
                                     Hệ thống đặt hàng dễ sử dụng, và tôi có thể theo dõi đơn hàng
                                     của mình mọi lúc. Sản phẩm được đóng gói cẩn thận,
                                     giữ nguyên hương vị tươi ngon. Họ cũng có chăm sóc khách hàng
                                     tận tình, luôn sẵn sàng giải đáp mọi thắc mắc của tôi.
-                                    Mua sắm trái cây trực tuyến qua trang web này là một trải nghiệm
+                                    Mua sắm bánh trực tuyến qua trang web này là một trải nghiệm
                                     đáng giá và đáng tin cậy .</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Nhà thiết kế giao diện người dùng</span>
