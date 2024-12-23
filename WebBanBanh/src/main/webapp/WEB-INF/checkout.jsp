@@ -253,6 +253,13 @@
                                 </textarea>
                             </div>
                         </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary py-3 px-4" onclick="redirectToJspPage()">Hướng dẫn xác thực đơn hàng</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
 
@@ -702,6 +709,11 @@
   });
 
 
+</script>
+<script type="text/javascript">
+    function redirectToJspPage() {
+        window.location.href = 'huongdan'; // Chuyển hướng đến trang bạn muốn
+    }
 </script>
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
