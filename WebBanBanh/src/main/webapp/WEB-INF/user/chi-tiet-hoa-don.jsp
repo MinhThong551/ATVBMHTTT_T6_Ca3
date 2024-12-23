@@ -53,6 +53,8 @@
           href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/user-css/chi-tiet-hoa-don.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/UserManager.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .bill-info-container {

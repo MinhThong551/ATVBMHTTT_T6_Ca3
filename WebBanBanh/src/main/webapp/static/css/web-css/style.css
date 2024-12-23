@@ -14072,4 +14072,140 @@ textarea.form-control {
 
 
 
+/* Phần chính */
+.ftco-section {
+    padding: 60px 15px;
+    background-color: #f8f9fa;
+}
+
+/* Bảng giỏ hàng */
+.cart-list {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table thead th {
+    background-color: #82ae46;
+    color: #fff;
+    font-weight: bold;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.product-remove a {
+    color: #dc3545;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.product-remove a:hover {
+    color: #b71c1c;
+}
+
+.product-name h3 {
+    font-size: 16px;
+    color: #495057;
+    margin: 0;
+}
+
+.price,
+.total {
+    font-weight: bold;
+    color: #82ae46;
+    font-size: 16px;
+}
+
+.image-prod .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-prod img {
+    border-radius: 5px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-prod img:hover {
+    transform: scale(1.1);
+}
+
+/* Điều chỉnh số lượng */
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group .form-control {
+    text-align: center;
+    width: 60px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-plus-indre {
+    display: inline-block;
+    color: #82ae46;
+    font-size: 20px;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.btn-plus-indre:hover {
+    color: #4a7d2e;
+}
+
+/* Nút kiểm tra */
+.cart-wrap .form-group {
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    background-color: #82ae46;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #4a7d2e;
+}
+
+/* Phần phản hồi */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .submit {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
 

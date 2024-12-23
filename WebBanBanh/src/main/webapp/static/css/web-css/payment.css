@@ -1,62 +1,130 @@
+/* Tiêu đề chính */
 .billing-heading {
     color: limegreen;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid limegreen;
+    display: inline-block;
+    padding-bottom: 5px;
 }
+
+/* SVG Icons */
 svg {
     padding-right: 10px;
     padding-top: 10px;
+    width: 24px;
+    height: 24px;
+    fill: limegreen;
 }
 
+/* Input styles */
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: all 0.3s ease;
 }
 
-.select__payment .payment__choices-cd, .payment__choices-pp {
-    border: #EBEBEB solid 1px;
-    height: 50px;
+input:focus {
+    border-color: limegreen;
+    box-shadow: 0 0 5px rgba(50, 205, 50, 0.5);
+    outline: none;
+}
+
+/* Thanh toán - thẻ chọn */
+.select__payment {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+
+.select__payment .payment__choices-cd,
+.select__payment .payment__choices-pp {
+    border: 1px solid #EBEBEB;
+    height: 60px;
     width: 270px;
     box-sizing: border-box;
     text-align: center;
     align-items: center;
     padding: 15px;
-
     background-color: #F9F9F9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.select__payment {
-    display: flex;
-    padding-bottom: 20px;
+.select__payment .payment__choices-cd:hover,
+.select__payment .payment__choices-pp:hover {
+    background-color: #e8ffe8;
+    border-color: limegreen;
 }
 
 .select__payment .payment__choices-pp label,
-.select__payment .payment__choices-cd label{
+.select__payment .payment__choices-cd label {
     align-items: center;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
+    font-size: 0.95em;
+    color: #333;
 }
 
-.payment__choices-cd.selected ,
-.payment__choices-pp.selected{
-    background-color: #7ED321 !important;
-    color: #ffffff!important;
-    fill: #ffffff!important;
+/* Thẻ chọn khi được chọn */
+.payment__choices-cd.selected,
+.payment__choices-pp.selected {
+    background-color: limegreen;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    border-color: limegreen;
 }
 
+/* Radio buttons */
 .radio {
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .check {
-    width: 15px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
 }
 
+.check::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: limegreen;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+input[type="radio"]:checked + .check::after {
+    opacity: 1;
+}
+
+/* Span text */
 span {
     padding-left: 10px;
+    font-size: 1em;
+    color: #555;
 }
 
-
-
-
-
-
+/* Hiệu ứng hover cho tất cả nút */
+button, .payment__choices-cd, .payment__choices-pp {
+    transition: all 0.3s ease;
+}

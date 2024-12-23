@@ -29,8 +29,8 @@
     fill: #000000;
 }
 .container-child-left ul li a:hover {
-    color: #82ae46;
-    fill: #82ae46;
+    color: #3c312e;
+    fill: #3c312e;
 }
 .container-child-left li {
     padding:10px 20px;
@@ -57,7 +57,7 @@
 
 .quan-ly-user {
     padding: 10px 20px;
-    background-color: #82ae46;
+    background-color: #3c312e;
     fill: #eeeeee;
     color: #eeeeee;
 }
@@ -65,8 +65,8 @@
     border-left: solid 1px #82ae46;
 }
 .main-user-content .container .active a {
-    fill: #82ae46;
-    color: #82ae46;
+    fill: #3c312e;
+    color: #3c312e;
 }
 
 .user-profile {

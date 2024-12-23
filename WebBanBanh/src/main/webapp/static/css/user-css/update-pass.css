@@ -30,9 +30,9 @@
     background-color: #FFFFFF;
 }
 .btn-group button:hover {
-    color:  #82ae46;
+    color: #3c312e;
     fill:  #82ae46;
-    border: 1px solid  #82ae46;
+    border: 1px solid  #3c312e;
 }
 
 .required {
