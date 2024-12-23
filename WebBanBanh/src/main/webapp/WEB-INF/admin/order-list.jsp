@@ -273,6 +273,7 @@
                         <th style="width: 150px;">Tổng tiền</th>
                         <th style="width: 150px;">Tình trạng</th>
                         <th style="width: 100px;"></th>
+                        <th style="width: 100px;">Xác thực</th>
                     </tr>
                     <c:forEach items="${listBills}" var="bill">
                         <tr style="background-color: #fff">
@@ -292,6 +293,9 @@
                                     </svg>
                                 </a>
 
+                            </td>
+                            <td>
+                                <div class="verify-status">${bill.getVerify()}</div>
                             </td>
                         </tr>
                     </c:forEach>
@@ -338,65 +342,109 @@
                     </c:if>
                 </c:if>
             </div>
+            <div class="form-container">
+                <form action="${pageContext.request.contextPath}/admin/order/order-list" method="POST">
+                    <button type="submit" name="updateAll">Cập nhật tất cả</button>
+                </form>
+            </div>
         </div>
     </section>
+
+    <style>
+        /* Căn giữa form */
+        .form-container {
+            margin-left: 35px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Độ cao chiếm toàn bộ màn hình */
+        }
+
+        /* Styling cơ bản cho button */
+        form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </div>
 <script>
-  let arrow = document.querySelectorAll(".arrow");
-  let closeSideBarBtn = document.querySelector(".btn-close-home");
+    let arrow = document.querySelectorAll(".arrow");
+    let closeSideBarBtn = document.querySelector(".btn-close-home");
 
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement; // Trở về phần tử cha của mũi tên
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-
-    // Sau khi toggle sidebar, kiểm tra và điều chỉnh hiển thị nút đóng sidebar
-    if (!sidebar.classList.contains("close")) {
-      closeSideBarBtn.style.display = "inline-block"; // Hiển thị nút đóng
-    } else {
-      closeSideBarBtn.style.display = "none"; // Ẩn nút đóng
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement; // Trở về phần tử cha của mũi tên
+            arrowParent.classList.toggle("showMenu");
+        });
     }
-  });
 
-  closeSideBarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-    closeSideBarBtn.style.display = "none"; // Luôn ẩn nút đóng khi click để đóng sidebar
-  });
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
 
-  var myVar;
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
 
-  function myFunction() {
-    myVar = setTimeout(showPage, 800);
-  }
-
-  function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    let orderStatusList = document.querySelectorAll(".order-status");
-
-    orderStatusList.forEach(function (status) {
-      if (status.innerHTML.toLowerCase() === "đang xử lý") {
-        status.classList.add('processing-order');
-      } else if (status.innerHTML.toLowerCase() === "đang giao") {
-        status.classList.add('on-delivering');
-      } else if (status.innerHTML.toLowerCase() === "đã giao") {
-        status.classList.add('delivered');
-      } else if (status.innerHTML.toLowerCase() === "đã hủy") {
-        status.classList.add('cancelled');
-      }
+        // Sau khi toggle sidebar, kiểm tra và điều chỉnh hiển thị nút đóng sidebar
+        if (!sidebar.classList.contains("close")) {
+            closeSideBarBtn.style.display = "inline-block"; // Hiển thị nút đóng
+        } else {
+            closeSideBarBtn.style.display = "none"; // Ẩn nút đóng
+        }
     });
-  });
+
+    closeSideBarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+        closeSideBarBtn.style.display = "none"; // Luôn ẩn nút đóng khi click để đóng sidebar
+    });
+
+    var myVar;
+
+    function myFunction() {
+        myVar = setTimeout(showPage, 800);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let orderStatusList = document.querySelectorAll(".order-status");
+        orderStatusList.forEach(function (status) {
+            let statusText = status.innerHTML.toLowerCase().trim();
+            if (statusText === "đang xử lý") {
+                status.classList.add('processing-order');
+            } else if (statusText === "đang giao") {
+                status.classList.add('on-delivering');
+            } else if (statusText === "đã giao") {
+                status.classList.add('delivered');
+            } else if (statusText === "đã hủy") {
+                status.classList.add('cancelled');
+            }
+        });
+
+        let verifyStatusList = document.querySelectorAll(".verify-status");
+        verifyStatusList.forEach(function (status) {
+            let statusText = status.innerHTML.toLowerCase().trim();
+            if (statusText === "chưa xác thực") {
+                status.classList.add('no_verify');
+            } else if (statusText === "đã xác thực") {
+                status.classList.add('is_verify');
+            } else if (statusText === "đã thay đổi") {
+                status.classList.add('has_changed');
+            }
+        });
+    });
 
 </script>
 </body>

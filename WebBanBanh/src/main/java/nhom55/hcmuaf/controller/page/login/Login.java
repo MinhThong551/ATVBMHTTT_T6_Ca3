@@ -120,6 +120,8 @@ public class Login extends HttpServlet {
         System.out.println("luu thong tin user");
         MyUtils.storeLoginedUser(session, user);
         cartUserWebsocket.transferCart(session);
+        // Lưu userId vào session
+        session.setAttribute("userId", user.getId()); // Lưu userId vào session
         {
           if (result.equals("ADMIN")) {
             usersLog.setNote("Admin: " + user.getUsername() + " đăng nhập vào hệ thống");

@@ -54,6 +54,9 @@ public interface UsersDao {
 
   String updateTimeStampUser(String email);
 
+  boolean  updatePublicKey(int userId, String publicKey);
+  boolean deletePublicKey(int userId);
+  String getPublicKeyByUserId(int userId);
 }
 
 

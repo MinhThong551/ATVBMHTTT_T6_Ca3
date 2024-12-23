@@ -12,7 +12,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <fmt:setLocale value="vi_VN"/>
-    <title>Cửa hàng trái cây</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -73,8 +73,7 @@
     <div class="container navbar-container">
         <div class="navbar-brand">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+                Bánh</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,9 +158,9 @@
                      data-scrollax-parent="true">
 
                     <div class="col-md-12 ftco-animate text-center">
-                        <h1 class="mb-2">Chúng tôi phục vụ trái cây tươi sống</h1>
-                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn
-                            muốn</h2>
+                        <h1 class="mb-2">Chúng tôi phục vụ đầy đủ các loại bánh ngon ,hợp khẩu vị </h1>
+                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những món bánh mang lại cảm giác tuyệt vời
+                            </h2>
                         <p><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
                               class="btn btn-primary">Xem cửa hàng</a></p>
                     </div>
@@ -178,9 +177,8 @@
                      data-scrollax-parent="true">
 
                     <div class="col-sm-12 ftco-animate text-center">
-                        <h1 class="mb-2">100% trái cây tươi sống</h1>
-                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn
-                            muốn</h2>
+                        <h1 class="mb-2">100% Handmade</h1>
+                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những món bánh mang lại cảm giác tuyệt vời</h2>
                         <p><a href="${pageContext.request.contextPath}/ShopForward"
                               class="btn btn-primary">Xem cửa hàng</a></p>
                     </div>
@@ -191,63 +189,63 @@
     </div>
 </section>
 
-<section class="ftco-section">
-    <div class="container">
-        <div class="row no-gutters ftco-services">
-            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-shipped"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">Miễn phí vận chuyển</h3>
-                        <span>Cho những đơn trên 200.000đ</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-diet"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">Luôn luôn tươi sống</h3>
-                        <span>Trái cây được đóng gói kĩ càng</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-award"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">Chất lượng cao</h3>
-                        <span>Chất lượng sản phẩm</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-customer-service"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">Hỗ trợ</h3>
-                        <span>Hỗ trợ 24/7 </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<%--<section class="ftco-section">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row no-gutters ftco-services">--%>
+<%--            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">--%>
+<%--                <div class="media block-6 services mb-md-0 mb-4">--%>
+<%--                    <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">--%>
+<%--                        <span class="flaticon-shipped"></span>--%>
+<%--                    </div>--%>
+<%--                    <div class="media-body">--%>
+<%--                        <h3 class="heading">Miễn phí vận chuyển</h3>--%>
+<%--                        <span>Cho những đơn trên 200.000đ</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">--%>
+<%--                <div class="media block-6 services mb-md-0 mb-4">--%>
+<%--                    <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">--%>
+<%--                        <span class="flaticon-diet"></span>--%>
+<%--                    </div>--%>
+<%--                    <div class="media-body">--%>
+<%--                        <h3 class="heading">Luôn luôn tươi sống</h3>--%>
+<%--                        <span>Trái cây được đóng gói kĩ càng</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">--%>
+<%--                <div class="media block-6 services mb-md-0 mb-4">--%>
+<%--                    <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">--%>
+<%--                        <span class="flaticon-award"></span>--%>
+<%--                    </div>--%>
+<%--                    <div class="media-body">--%>
+<%--                        <h3 class="heading">Chất lượng cao</h3>--%>
+<%--                        <span>Chất lượng sản phẩm</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">--%>
+<%--                <div class="media block-6 services mb-md-0 mb-4">--%>
+<%--                    <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">--%>
+<%--                        <span class="flaticon-customer-service"></span>--%>
+<%--                    </div>--%>
+<%--                    <div class="media-body">--%>
+<%--                        <h3 class="heading">Hỗ trợ</h3>--%>
+<%--                        <span>Hỗ trợ 24/7 </span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</section>--%>
 
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate">
-                <span class="subheading">Những trái cây nổi bật của chúng tôi</span>
-                <h2 class="mb-4">Trái cây của chúng tôi</h2>
+                <span class="subheading">Những món bánh nổi bật của chúng tôi</span>
+                <h2 class="mb-4"> Các loại bánh </h2>
 
             </div>
         </div>
@@ -292,7 +290,7 @@
                                         <c:if test="${product.getQuantityStock() == 0}">
                                         <a href="javascript:void(0);"
                                            onclick="showToast('No quantity')"
-                                           style="background-color: gray; color: #fff;"
+                                           style="background-color: rgb(128,128,128); color: #fff;"
                                            class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                             <span><i
                                                                     class="ion-ios-cart"></i></span>
@@ -320,8 +318,7 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh ngon , thơm , giá cả phải chăng</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
                         </li>

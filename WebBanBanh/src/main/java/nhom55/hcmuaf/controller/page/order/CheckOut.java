@@ -12,6 +12,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -88,7 +89,7 @@ public class CheckOut extends HttpServlet {
         int idPayment = 1;
         address += ", quận " + district + ", tỉnh " + city;
 
-        if (billDao.addAListProductToBills(timeNow, productNameList, "Đang giao", users.getId(),
+        if (billDao.addAListProductToBills(timeNow, productNameList, "Đang xử lý", users.getId(),
                 idPayment, firstName, lastName, address, city, phoneNumber, email, subTotalPrice,
                 deliveryFeeDouble, note)) {
           int id_bills = billDao.getIDAListProductFromBills(timeNow, users.getId());
@@ -114,10 +115,12 @@ public class CheckOut extends HttpServlet {
             message.addHeader("Content-type", "text/HTML; charset=UTF-8");
             message.setFrom(new InternetAddress(MailProperties.getEmail()));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setSubject("ĐẶT HÀNG");
-            message.setText(
-                    "Đơn đặt hàng của bạn đã thành công. Xem chi tiết đơn hàng tại: "
-                            + "http://localhost:8080/page/bill/detail?idBills=" + id_bills);
+            message.setSubject(MimeUtility.encodeText("ĐẶT HÀNG", "UTF-8", "B"));
+
+            String body = "Đơn đặt hàng của bạn đã thành công. Xem chi tiết đơn hàng tại: "
+                    + "http://localhost:8080/page/bill/detail?idBills=" + id_bills;
+            message.setContent(body, "text/plain; charset=UTF-8");
+
             Transport.send(message);
 
             // Logging đặt hàng thành công
@@ -139,6 +142,7 @@ public class CheckOut extends HttpServlet {
             absDAO.insert(log);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/page/bill/list-bill");
+            request.setAttribute("message", "Để đảm bảo đơn hàng của bạn không bị bất cứ sự cố gì hãy xác thực đơn hàng ở đây.");
             dispatcher.forward(request, response);
           } catch (Exception e) {
             System.out.println("SendEmail Error: " + e);
