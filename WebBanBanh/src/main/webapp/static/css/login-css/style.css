@@ -107,7 +107,7 @@ body a:hover,body a{
 }
 
 .login-header {
-    background: limegreen;
+    background: #3c312e;
     padding: 20px;
     font-size: 1.4em;
     font-weight: normal;
@@ -251,7 +251,7 @@ body a:hover,body a{
 
 .login-container input[type="submit"] {
     width: 100%;
-    background-color:#41e533;
+    background-color:#3c312e;
     color: white;
     padding: 12px 20px;
 

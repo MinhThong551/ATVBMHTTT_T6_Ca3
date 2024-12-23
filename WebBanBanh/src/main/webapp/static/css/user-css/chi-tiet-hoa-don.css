@@ -12,13 +12,13 @@
 }
 
 .main-container .header-tag h1 {
-    color: #82ae46;
+    color:#3c312e;
 }
 .ds-sp table {
     width: 100%;
 }
 .ds-sp table tr:first-child {
-    background-color: #82ae46;
+    background-color: #3c312e;
     color: #FFFFFF;
 
 }
@@ -38,8 +38,8 @@
     fill: #FFFFFF;
 }
 .product-single a:hover {
-    background-color: #82ae46;
-    border: solid 1px #82ae46;
+    background-color:#3c312e;
+    border: solid 1px #3c312e;
 }
 .product-single a:hover svg {
     fill: #FFFFFF;
@@ -65,7 +65,7 @@
     width: 230px;
 }
 .ds-hoa-don-link a svg {
-    fill: #1c7430;
+    fill: #3c312e;
 }
 .ds-hoa-don-link a:hover {
     color: black;
@@ -111,7 +111,7 @@
 
 #private-key-file:hover,
 #private-key-file:focus {
-    border-color: #82ae46;
+    border-color: #3c312e;
 }
 
 /* Nút bấm */
@@ -126,12 +126,12 @@ button {
 }
 
 #btn-sign {
-    background-color: #82ae46;
+    background-color: #3c312e;
     color: white;
 }
 
 #btn-sign:hover {
-    background-color: #6fa038;
+    background-color: #3c312e;
     transform: scale(1.05);
 }
 
