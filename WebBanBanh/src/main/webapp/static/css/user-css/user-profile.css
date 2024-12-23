@@ -29,8 +29,8 @@
     fill: #000000;
 }
 .container-child-left ul li a:hover {
-    color: #82ae46;
-    fill: #82ae46;
+    color: #6F4F28;
+    fill: #6F4F28;
 }
 .container-child-left li {
     padding:10px 20px;
@@ -57,16 +57,16 @@
 
 .quan-ly-user {
     padding: 10px 20px;
-    background-color: #82ae46;
+    background-color: #6F4F28;
     fill: #eeeeee;
     color: #eeeeee;
 }
 .main-user-content .container .container-child-left .active {
-    border-left: solid 1px #82ae46;
+    border-left: solid 1px #6F4F28;
 }
 .main-user-content .container .active a {
-    fill: #82ae46;
-    color: #82ae46;
+    fill: #6F4F28;
+    color: #6F4F28;
 }
 
 .user-profile {

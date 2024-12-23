@@ -14,7 +14,7 @@ import java.io.OutputStream;
 public class HuongDanServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Đọc tệp HTML từ thư mục WEB-INF
-        String filePath = "/WEB-INF/huongdan.html";
+        String filePath = "/WEB-INF/huongdan.jsp";
         ServletContext context = getServletContext();
         InputStream inputStream = context.getResourceAsStream(filePath);
 

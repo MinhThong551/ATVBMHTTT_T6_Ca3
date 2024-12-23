@@ -1,5 +1,5 @@
 .billing-heading {
-    color: limegreen;
+    color: #6f4f28;
 }
 svg {
     padding-right: 10px;
@@ -38,7 +38,7 @@ input {
 
 .payment__choices-cd.selected ,
 .payment__choices-pp.selected{
-    background-color: #7ED321 !important;
+    background-color: #6F4F28 !important;
     color: #ffffff!important;
     fill: #ffffff!important;
 }

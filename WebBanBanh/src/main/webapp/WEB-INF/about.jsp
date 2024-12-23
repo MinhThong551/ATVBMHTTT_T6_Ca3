@@ -214,7 +214,7 @@
                                 <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua bánh qua một
                                     trang web ở Việt Nam và rất hài lòng với
                                     chất lượng sản phẩm. Trang web cung cấp thông tin chi tiết về
-                                    nguồn gốc và quy trình chăm sóc bánh,
+                                    nguồn gốc và quy trình bảo quản bánh,
                                     giúp tôi chọn lựa được những sản phẩm tươi ngon và an toàn. Quá
                                     trình đặt hàng và thanh toán đơn giản, và tôi nhận được giao
                                     hàng đúng
@@ -241,7 +241,7 @@
                                     mô tả chi tiết giúp tôi lựa chọn được những loại bánh ngon
                                     nhất.
                                     Giao hàng nhanh chóng và sản phẩm đến tay tôi vẫn giữ được độ
-                                    tươi ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang
+                                    thơm ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang
                                     web này
                                     cho bạn bè và gia đình của mình .</p>
                                 <p class="name">Garreth Smith</p>

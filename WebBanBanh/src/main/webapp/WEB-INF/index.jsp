@@ -179,7 +179,7 @@
 
                     <div class="col-sm-12 ftco-animate text-center">
                         <h1 class="mb-2">100% bán tươi ngon</h1>
-                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những bánh mà bạn
+                        <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những sản phẩm bánh mà bạn
                             muốn</h2>
                         <p><a href="${pageContext.request.contextPath}/ShopForward"
                               class="btn btn-primary">Xem cửa hàng</a></p>

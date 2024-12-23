@@ -1,6 +1,6 @@
 
 .table-sanpham {
-    border: 1px solid #82ae46;
+    border: 1px solid #6F4F28;
 }
 .table-sanpham th, td {
     border: 1px solid #646363;
@@ -19,7 +19,7 @@
     color: #000000;
 }
 .table-sanpham  th {
-    background-color: #82ae46;
+    background-color: #6F4F28;
     color: #fff;
 }
 
@@ -38,7 +38,7 @@
     padding: 5px;
 }
 .function-product a:hover svg {
-    fill: #1c7430;
+    fill: #6F4F28;
 }
 .find-product {
     float: right;

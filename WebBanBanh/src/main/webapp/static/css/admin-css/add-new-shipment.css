@@ -156,7 +156,7 @@ table.dataTable tbody td {
 
 /* CSS tùy chỉnh cho các nút */
 .btn-edit {
-  background-color: #4CAF50; /* Màu nền cho nút chỉnh sửa */
+  background-color: #6F4F28; /* Màu nền cho nút chỉnh sửa */
   color: white; /* Màu chữ */
   border: none; /* Không viền */
   padding: 10px 20px; /* Khoảng cách bên trong */
@@ -207,7 +207,7 @@ table.dataTable tbody td {
 }
 
 .status-product.unlock span {
-  color: #4CAF50;
+  color: #6F4F28;
 }
 
 .image-table-product {
@@ -275,7 +275,7 @@ table.dataTable tbody td {
 }
 
 .save-button {
-  background-color: #4CAF50; /* Màu nền */
+  background-color: #6F4F28; /* Màu nền */
   color: white; /* Màu chữ */
   border: none; /* Bỏ viền */
   padding: 10px 20px; /* Khoảng cách lề */

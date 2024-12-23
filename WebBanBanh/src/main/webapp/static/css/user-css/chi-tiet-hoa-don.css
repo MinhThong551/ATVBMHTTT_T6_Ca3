@@ -12,13 +12,13 @@
 }
 
 .main-container .header-tag h1 {
-    color: #82ae46;
+    color: #6F4F28;
 }
 .ds-sp table {
     width: 100%;
 }
 .ds-sp table tr:first-child {
-    background-color: #82ae46;
+    background-color: #6F4F28;
     color: #FFFFFF;
 
 }
@@ -38,8 +38,8 @@
     fill: #FFFFFF;
 }
 .product-single a:hover {
-    background-color: #82ae46;
-    border: solid 1px #82ae46;
+    background-color: #6F4F28;
+    border: solid 1px #6F4F28;
 }
 .product-single a:hover svg {
     fill: #FFFFFF;
@@ -65,7 +65,7 @@
     width: 230px;
 }
 .ds-hoa-don-link a svg {
-    fill: #1c7430;
+    fill: #6F4F28;
 }
 .ds-hoa-don-link a:hover {
     color: black;
@@ -111,7 +111,7 @@
 
 #private-key-file:hover,
 #private-key-file:focus {
-    border-color: #82ae46;
+    border-color: #6F4F28;
 }
 
 /* Nút bấm */
@@ -126,21 +126,21 @@ button {
 }
 
 #btn-sign {
-    background-color: #82ae46;
+    background-color: #6F4F28;
     color: white;
 }
 
 #btn-sign:hover {
-    background-color: #6fa038;
+    background-color: #6F4F28;
     transform: scale(1.05);
 }
 
 #btn-create-signature {
-    background-color: #007bff;
+    background-color: #6F4F28;
     color: white;
 }
 
 #btn-create-signature:hover {
-    background-color: #0056b3;
+    background-color: #6F4F28;
     transform: scale(1.05);
 }

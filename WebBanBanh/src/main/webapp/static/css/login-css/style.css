@@ -74,10 +74,10 @@ body a:hover,body a{
     font-size: 12px;
 }
 .login-title span .fa {
-    color: #33b5e5;
+    color: #6f4f28;
 }
 .login-title span a {
-    color: #33b5e5;
+    color: #6f4f28;
     font-weight: 600;
     text-decoration: none;
 }
@@ -103,11 +103,11 @@ body a:hover,body a{
     margin-right: auto;
     margin-left: auto;
     border: 12px solid transparent;
-    border-bottom-color: #28d;
+    border-bottom-color: #6f4f28;
 }
 
 .login-header {
-    background: limegreen;
+    background: #6f4f28;
     padding: 20px;
     font-size: 1.4em;
     font-weight: normal;
@@ -145,32 +145,32 @@ body a:hover,body a{
 }
 
 .login-container input[type="email"]:hover {
-    border-color: #28d;
+    border-color: #6f4f28;
 }
 
 /* Text fields' focus effect */
 .login input[type="email"]:focus,
 .login input[type="password"]:focus {
-    border-color: #33b5e5;
+    border-color: #6f4f28;
 }
 .login input[type="email"]:hover
 .login input[type="password"]:hover {
-    border-color:#28d
+    border-color:#6F4F28
 }
 .login input[type="submit"] {
-    background:#33b5e5 ;
+    background:#6F4F28 ;
     border-color: transparent;
     color: #fff;
     cursor: pointer;
 }
 
 .login input[type="submit"]:hover {
-    background:#28d;
+    background:#6F4F28;
 }
 
 /* Buttons' focus effect */
 .login input[type="submit"]:focus {
-    border-color: #05a;
+    border-color: #6F4F28;
 }
 .form .social-icons {
     font-size:20px;
@@ -191,7 +191,7 @@ body a:hover,body a{
     margin: 20px 0;
 }
 .bottom-header h3 {
-    color: #33b5e5;
+    color: #6F4F28;
     text-align: center;
     font-size:20px;
     margin-top: 0px;
@@ -230,11 +230,11 @@ body a:hover,body a{
 /* colors */
 
 .facebook {
-    background: #3b5998;
+    background: #6F4F28;
 }
 
 .twitter {
-    background: #55acee;
+    background: #6F4F28;
 }
 
 .googleplus {
@@ -242,7 +242,7 @@ body a:hover,body a{
 }
 
 .linkedin {
-    background: #0077b5;
+    background: #6F4F28;
 }
 
 .pinterest {
@@ -251,7 +251,7 @@ body a:hover,body a{
 
 .login-container input[type="submit"] {
     width: 100%;
-    background-color:#41e533;
+    background-color:#6F4F28;
     color: white;
     padding: 12px 20px;
 
@@ -268,7 +268,7 @@ body a:hover,body a{
 }
 
 input[type=submit]:hover {
-    background-color:rgba(51, 181, 229, 0.62);
+    background-color: rgb(111, 79, 40);
 }
 
 
@@ -286,13 +286,13 @@ input[type=submit]:hover {
     font-size:14px;
 }
 .bottom-text a {
-    color: #33b5e5;
+    color: #6F4F28;
     text-decoration: none;
     font-size:14px;
 }
 
 .bottom-text p a{
-    color:#33b5e5;
+    color:#6F4F28;
     margin-left: 5px;
     transition: .5s ease-in;
     -webkit-transition: .5s ease-in;
@@ -306,7 +306,7 @@ input[type=submit]:hover {
 }
 .bottom-text h4 {
     font-size:10px;
-    color:#33b5e5;
+    color:#6F4F28;
     margin-top: 10px;
     color:#ef4d4d;
     transition: .5s ease-in;
@@ -335,7 +335,7 @@ input[type=submit]:hover {
 .footer-w3l p a:hover{
     text-decoration:underline;
     color:#ef4d4d;
-    color:#33b5e5;
+    color:#6F4F28;
     transition: .5s ease-in;
     -webkit-transition: .5s ease-in;
     -ms-transition: .5s ease-in;
@@ -388,7 +388,7 @@ input[type=submit]:hover {
     }
 
     .bottom-text a {
-        color: #33b5e5;
+        color: #6F4F28;
         text-decoration: none;
         font-size: 12px;
     }

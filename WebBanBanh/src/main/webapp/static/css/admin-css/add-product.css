@@ -20,7 +20,7 @@ td:nth-child(n) input {
     transition: 0.5s ease;
 }
 td:nth-child(n) input:focus{
-    border-color: rgb(105 165 135);
+    border-color: rgb(111, 79, 40);
 }
 td:nth-child(n) textarea {
     border-radius: 5px;
@@ -28,7 +28,7 @@ td:nth-child(n) textarea {
     transition: 0.5s ease;
 }
 td:nth-child(n) textarea:focus{
-    border-color: rgb(105 165 135);
+    border-color: rgb(111, 79, 40);
 }
 
 .form-sp button {

@@ -272,7 +272,7 @@ table th {
 }
 
 .status-green {
-    background-color: #6cd67c; /* Màu xanh lá cây */
+    background-color: #6F4F28; /* Màu xanh lá cây */
     color: #fff; /* Màu chữ trắng */
 }
 
@@ -310,7 +310,7 @@ table th {
 }
 
 .inventory-history .positive {
-    color: #28a745;
+    color: #6F4F28;
     font-weight: bold;
 }
 
@@ -359,7 +359,7 @@ table th {
 }
 
 .positive {
-    color: green;
+    color: #6f4f28;
 }
 
 .negative {
