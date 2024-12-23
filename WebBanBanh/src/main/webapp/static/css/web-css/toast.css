@@ -71,11 +71,11 @@
 }
 
 .toast--success {
-  border-color: #71be34;
+  border-color: #6F4F28;
 }
 
 .toast--success .toast__icon {
-  fill: #71be34;
+  fill: #6F4F28;
 }
 
 .toast--info {

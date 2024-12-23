@@ -41,7 +41,7 @@ a:active,a:hover {
 h1 {
     font-size: 2em;
     margin: .67em 0;
-    color: #35c656;
+    color: #6F4F28;
 }
 
 h2 {
@@ -986,10 +986,10 @@ output {
 }
 
 .form-control:focus {
-    border-color: #66afe9;
+    border-color: #6F4F28;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(111, 79, 40);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(111, 79, 40)
 }
 
 .form-control::-moz-placeholder {
@@ -1006,7 +1006,7 @@ output {
 }
 
 .has-success .checkbox,.has-success .checkbox-inline,.has-success .control-label,.has-success .form-control-feedback,.has-success .help-block,.has-success .radio,.has-success .radio-inline,.has-success.checkbox label,.has-success.checkbox-inline label,.has-success.radio label,.has-success.radio-inline label {
-    color: #3c763d
+    color: #6F4F28
 }
 
 .form-control::-ms-expand {

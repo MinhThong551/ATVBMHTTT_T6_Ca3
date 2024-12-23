@@ -79,7 +79,7 @@
 }
 
 .pagination a:hover:not(.active) {
-    background-color: green;
+    background-color: #6f4f28;
 }
 
 .img-product img{
@@ -104,7 +104,7 @@
 .on-delivering {
     color: #FFFFFF;
     padding: 5px 0;
-    background-color: #2F903F;
+    background-color: #6F4F28;
     border-radius: 20px;
     text-align: center;
 }
@@ -126,7 +126,7 @@
 .is_verify {
     color: #FFFFFF;
     padding: 5px 0;
-    background-color: #2F903F;
+    background-color: #6F4F28;
     border-radius: 20px;
     text-align: center;
 }
@@ -149,7 +149,7 @@
 .active-account {
     color: #FFFFFF;
     padding: 5px 0;
-    background-color: #2F903F;
+    background-color: #6F4F28;
     border-radius: 20px;
     text-align: center;
 }
