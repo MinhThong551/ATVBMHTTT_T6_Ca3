@@ -29,7 +29,8 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     private String verify;
     private String billHash;
     private String billFeatures;
-    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify,String billHash,String billFeatures) {
+    private String signature;
+    public Bills(int id, LocalDateTime orderedDate, String productList, String status, int userId, int payment, String firstName, String lastName, String streetAddress, String city, String phoneNumber, String email, double totalPrice,double deliveryFee,String note,LocalDateTime creationTime,String verify,String billHash,String billFeatures,String signature) {
 
         this.id = id;
         this.orderedDate = orderedDate;
@@ -50,6 +51,8 @@ public class Bills extends Log<Users> implements Serializable, IModel {
         this.verify = verify;
         this.billHash = billHash;
         this.billFeatures=billFeatures;
+        this.signature = signature;
+
     }
     public Bills() {
 
@@ -76,7 +79,8 @@ public class Bills extends Log<Users> implements Serializable, IModel {
                 ", creationTime=" + creationTime + '\'' +
                 ", verify=" + verify +'\'' +
                 ", billHash=" + billHash +'\'' +
-                ", billFeatures=" + billFeatures +
+                ", billFeatures=" + billFeatures + '\'' +
+                ", signature=" + signature +
         '}';
     }
 
@@ -224,6 +228,7 @@ public class Bills extends Log<Users> implements Serializable, IModel {
     public void setBillHash(String billHash) {
         this.billHash =billHash;
     }
+
     public String getBillFeatures() {
         return billFeatures;
     }
@@ -232,6 +237,13 @@ public class Bills extends Log<Users> implements Serializable, IModel {
         this.billFeatures =billFeatures;
     }
 
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature =signature;
+    }
     @Override
     public String getTable() {
         return "Bills";

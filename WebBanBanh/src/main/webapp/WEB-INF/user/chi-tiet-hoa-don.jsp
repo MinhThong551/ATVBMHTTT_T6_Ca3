@@ -326,11 +326,10 @@
                     <span class="close" id="closeModal">×</span>
                     <form id="signatureForm" method="post" action="${pageContext.request.contextPath}/page/bill/detail">
                         <div class="bill-info-container">
-<%--                            <div class="bill-info">--%>
-<%--                                <p>Chuỗi đặc điểm:</p>--%>
-<%--                                <span id="billFeatures">${billFeatures}</span>--%>
-<%--                                <input type="hidden" name="billFeatures" value="${billFeatures}">--%>
-<%--                            </div>--%>
+                            <div class="bill-info">
+                                <!-- Ẩn chuỗi đặc điểm -->
+                                <input type="hidden" name="billFeatures" value="${billFeatures}">
+                            </div>
                             <div class="bill-info">
                                 <p>Mã Hash:</p>
                                 <span id="billHash">${billHash}</span>
