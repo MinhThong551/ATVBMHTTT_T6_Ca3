@@ -329,15 +329,15 @@
                                     <td><p style="color: red">${mo_ta_error}</p></td>
                                 </c:if>
                                 <tr>
-                                    <td><label>Loại Trái cây <span
+                                    <td><label>Loại bánh <span
                                             style="color: red">*</span></label>
                                     </td>
                                     <td>
                                         <select style="width: 300px" id="doanhMuc"
                                                 name="selectedSeasonalFruit">
-                                            <option value="trai-cay-viet">Trái cây Việt</option>
-                                            <option value="trai-cay-nhap">Trái cây Nhập</option>
-                                            <option value="qua-tang-trai-cay">Quà Tặng Trái Cây</option>
+                                            <option value="trai-cay-viet">bánh bảo quản ngắn</option>
+                                            <option value="trai-cay-nhap">Bánh bảo quản lâu</option>
+                                            <option value="qua-tang-trai-cay">bánh nhập </option>
                                         </select>
                                     </td>
                                 </tr>

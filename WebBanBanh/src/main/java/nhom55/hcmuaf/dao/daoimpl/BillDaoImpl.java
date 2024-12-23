@@ -373,8 +373,17 @@ public class BillDaoImpl implements BillDao {
       );
     }
 
+  @Override
+  public String getBillVerifyStatus(int billId) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createQuery("SELECT verify FROM bills WHERE id = :billId")
+                    .bind("billId", billId)
+                    .mapTo(String.class)
+                    .findOne()
+                    .orElse(null)
+    );
 
-
+  }
 
 
   public static void main(String[] args) {

@@ -12,7 +12,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <fmt:setLocale value="vi_VN"/>
-    <title>Cửa hàng trái cây</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -73,8 +73,7 @@
     <div class="container navbar-container">
         <div class="navbar-brand">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+                Bánh</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
