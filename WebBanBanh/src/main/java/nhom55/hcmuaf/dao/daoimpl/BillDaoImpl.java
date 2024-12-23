@@ -351,6 +351,29 @@ public class BillDaoImpl implements BillDao {
       );
     }
 
+  @Override
+  public String getSignatureById(int billId) {
+    return JDBIConnector.get().withHandle(handle ->
+            handle.createQuery("SELECT signature FROM bills WHERE id = :billId")
+                    .bind("billId", billId)
+                    .mapTo(String.class)
+                    .findOne()
+                    .orElse(null)
+    );
+  }
+
+  @Override
+  public String getPublicKeyByUserId(int userId) {
+      return JDBIConnector.get().withHandle(handle ->
+              handle.createQuery("SELECT publicKey FROM users WHERE id = :userId")
+                      .bind("userId", userId)  // Gắn tham số vào câu truy vấn
+                      .mapTo(String.class)     // Chuyển kết quả trả về thành String (public key)
+                      .findOne()               // Lấy một kết quả duy nhất
+                      .orElse(null)            // Nếu không có kết quả, trả về null
+      );
+    }
+
+
 
 
 

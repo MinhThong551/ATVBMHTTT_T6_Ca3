@@ -189,7 +189,7 @@
           <button type="submit" name="action" value="save-key" id="save-changes" style="background: greenyellow">Lưu thay đổi</button>
         </div>
         <div class="download-button-container">
-          <a type="button" id="download-crypto-tools" download href="WebBanBanh/src/main/webapp/CryptoTools.jar">Tải xuống CryptoTools.exe</a>
+          <a type="button" id="download-crypto-tools" download href="/CryptoTools.jar">Tải xuống CryptoTools.exe</a>
         </div>
 
         <c:if test="${not empty result}">
