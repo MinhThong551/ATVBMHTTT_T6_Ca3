@@ -510,7 +510,7 @@
   let totalAmount = 0;
   let totalPrice = 0;
   let finalPrice = 0;
-  let shipPrice = 30000;
+  let shipPrice = 0;
 
   document.addEventListener('DOMContentLoaded', function () {
     let getAllSL = document.querySelectorAll(".so-luong");

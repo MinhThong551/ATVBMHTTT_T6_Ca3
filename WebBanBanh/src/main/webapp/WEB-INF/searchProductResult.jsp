@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng bánh</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -61,8 +61,8 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng Bánh
-                </a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Bánh Bánh</a>
+
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +137,7 @@
 <div id="toast">
 </div>
 <div class="hero-wrap hero-bread"
-     style="background-image: url('/static/images/bg1_news.jpg');filter: brightness(0.8);">
+     style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -156,7 +156,7 @@
                     <form style="position: relative; top:-40px; left: 350px"
                           action="${pageContext.request.contextPath}/page/shop/shop-controller?index=1" method="post">
                         <input style="width: 300px" type="text"
-                               placeholder="Tìm bánh mà bạn cần" name="txtSearch">
+                               placeholder="Tìm trái cây mà bạn cần" name="txtSearch">
                         <input style="width: 100px" type="submit" value="Tìm kiếm">
                     </form>
                     <%--                    html của filter --%>
@@ -185,16 +185,16 @@
                             </fieldset>
                             <fieldset style=" border: 2px solid #82ae46;">
                                 <legend style="width: 150px;font-size: 18px;">Lọc theo mùa</legend>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="springFilter" name="spring" value=""> Bánh mùa xuân</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="summerFilter" name="summer" value=""> Bánh mùa hạ</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="autumnFilter" name="autumn" value=""> Bánh mùa thu</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="winterFilter" name="winter" value=""> Bánh  mùa đông</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="springFilter" name="spring" value=""> Trái cây mùa xuân</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="summerFilter" name="summer" value=""> Trái cây mùa hạ</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="autumnFilter" name="autumn" value=""> Trái cây mùa thu</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="winterFilter" name="winter" value=""> Trái cây mùa đông</label>
                             </fieldset>
                             <fieldset style=" border: 2px solid #82ae46;">
                                 <legend style="width: 150px;font-size: 18px;">Lựa chọn khác</legend>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="localFilter" name="local" value=""> Bánh trong nước</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="importedFilter" name="imported" value=""> Bánh nhập khẩu</label>
-                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="driedFilter" name="dried" value="">Bánh khô</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="localFilter" name="local" value=""> Trái cây trong nước</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="importedFilter" name="imported" value=""> Trái cây nhập khẩu</label>
+                                <label style=" display: block;margin-bottom: 10px;"><input type="checkbox" class="driedFilter" name="dried" value=""> Trái cây khô</label>
                             </fieldset>
                             <input style="margin-top: 5px" type="submit" value="Lọc">
                         </form>
@@ -298,6 +298,7 @@
     </div>
 
 </section>
+
 <footer class="ftco-footer ftco-section">
     <div class="container">
         <div class="row">
@@ -310,12 +311,14 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Bánh tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua bánh lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh ngon , thơm , giá cả phải chăng</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span
+                                class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -323,15 +326,21 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="${pageContext.request.contextPath}/page/about" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a  href="${pageContext.request.contextPath}/page/contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
+                               class="py-2 d-block">Cửa
+                            hàng chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/about"
+                               class="py-2 d-block">Về chúng
+                            tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/contact"
+                               class="py-2 d-block">Liên hệ với
+                            chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Help</h2>
+                    <h2 class="ftco-heading-2">Giúp đỡ</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
                             <li><a href="#" class="py-2 d-block">Thông tin vận chuyển</a></li>
@@ -356,6 +365,8 @@
                             </li>
                             <li><a href="#"><span class="icon icon-phone"></span><span
                                     class="text">028-38966780</span></a></li>
+
+
                             <li><a href="#"><span class="icon icon-envelope"></span><span
                                     class="text">pdaotao@hcmuaf.edu.vn</span></a>
                             </li>
@@ -368,12 +379,10 @@
             <div class="col-md-12 text-center">
 
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                     All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
                                                               aria-hidden="true"></i> <a
                         href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
         </div>

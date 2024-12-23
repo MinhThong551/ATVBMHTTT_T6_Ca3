@@ -89,7 +89,7 @@ public class CheckOut extends HttpServlet {
         int idPayment = 1;
         address += ", quận " + district + ", tỉnh " + city;
 
-        if (billDao.addAListProductToBills(timeNow, productNameList, "Đang giao", users.getId(),
+        if (billDao.addAListProductToBills(timeNow, productNameList, "Đang xử lý", users.getId(),
                 idPayment, firstName, lastName, address, city, phoneNumber, email, subTotalPrice,
                 deliveryFeeDouble, note)) {
           int id_bills = billDao.getIDAListProductFromBills(timeNow, users.getId());

@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng bánh</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -59,9 +59,8 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Bánh
-            </a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Bánh Bánh</a>
+
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,7 +137,7 @@
 <!-- END nav -->
 
 <div class="hero-wrap hero-bread"
-     style="background-image: url(/static/images/bg2_news.jpg);filter: brightness(0.8);">
+     style="background-image: url(/static/images/bg1.jpg);filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -164,21 +163,21 @@
             <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                 <div class="heading-section-bold mb-4 mt-md-5">
                     <div class="ml-md-0">
-                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng bánh online, trang web
+                        <h2 class="mb-4">Chào mừng bạn đến với Bánh Bánh online, trang web
                             của chúng tôi</h2>
                     </div>
                 </div>
                 <div class="pb-md-5">
                     <p>Dù Việt Nam có một nền kinh tế nông nghiệp phát triển, nhưng việc tiếp cận và
                         mua,
-                        sắm bánh tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với
+                        sắm trái cây tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với
                         người tiêu dùng.
                         Để đáp ứng nhu cầu ngày càng cao của khách hàng về sự thuận tiện và đảm bảo
                         chất lượng,
                         trang web của chúng tôi xuất hiện để phục vụ nhu cầu cho bạn.
                     </p>
                     <p>Bạn có thể dễ dàng chọn lựa sản phẩm mà họ muốn, đặt hàng trực tuyến và
-                        nhận được những quả bánh thơm ngon sức sống được giao hàng tận nơi. Ngoài ra,
+                        nhận được những quả trái cây tươi sức sống được giao hàng tận nơi. Ngoài ra,
                         chúng tôi
                         thường xuyên cập nhật các ưu đãi, khuyến mãi và chính sách hỗ trợ
                         khách hàng, tạo ra một trải nghiệm mua sắm trực tuyến an tâm và tiện
@@ -211,10 +210,10 @@
                     </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua bánh qua một
+                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua trái cây qua một
                                     trang web ở Việt Nam và rất hài lòng với
                                     chất lượng sản phẩm. Trang web cung cấp thông tin chi tiết về
-                                    nguồn gốc và quy trình bảo quản bánh,
+                                    nguồn gốc và quy trình chăm sóc trái cây,
                                     giúp tôi chọn lựa được những sản phẩm tươi ngon và an toàn. Quá
                                     trình đặt hàng và thanh toán đơn giản, và tôi nhận được giao
                                     hàng đúng
@@ -235,13 +234,13 @@
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Đã lâu tôi không tin tưởng mua bánh trực tuyến, nhưng sau
-                                    khi thử nghiệm một trang web bán bánh ở Việt Nam,
+                                    Đã lâu tôi không tin tưởng mua trái cây trực tuyến, nhưng sau
+                                    khi thử nghiệm một trang web bán trái cây ở Việt Nam,
                                     tôi đã hoàn toàn thay đổi quan điểm. Sự đa dạng của sản phẩm và
-                                    mô tả chi tiết giúp tôi lựa chọn được những loại bánh ngon
+                                    mô tả chi tiết giúp tôi lựa chọn được những loại trái cây ngon
                                     nhất.
                                     Giao hàng nhanh chóng và sản phẩm đến tay tôi vẫn giữ được độ
-                                    thơm ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang
+                                    tươi ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang
                                     web này
                                     cho bạn bè và gia đình của mình .</p>
                                 <p class="name">Garreth Smith</p>
@@ -259,13 +258,13 @@
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Trải nghiệm mua sắm bánh trực tuyến tại một trang web ở Việt
+                                    Trải nghiệm mua sắm trái cây trực tuyến tại một trang web ở Việt
                                     Nam đã mang lại cho tôi sự tiện lợi và an tâm.
                                     Hệ thống đặt hàng dễ sử dụng, và tôi có thể theo dõi đơn hàng
                                     của mình mọi lúc. Sản phẩm được đóng gói cẩn thận,
                                     giữ nguyên hương vị tươi ngon. Họ cũng có chăm sóc khách hàng
                                     tận tình, luôn sẵn sàng giải đáp mọi thắc mắc của tôi.
-                                    Mua sắm bánh trực tuyến qua trang web này là một trải nghiệm
+                                    Mua sắm trái cây trực tuyến qua trang web này là một trải nghiệm
                                     đáng giá và đáng tin cậy .</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Nhà thiết kế giao diện người dùng</span>
@@ -340,15 +339,15 @@
         </div>
         <div class="row mb-5">
             <div class="col-md">
-                <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Menu</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
-                               class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="${pageContext.request.contextPath}/page/about"
-                               class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="${pageContext.request.contextPath}/page/contact"
-                               class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Bánh ngon , thơm , giá cả phải chăng</h2>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span
+                                class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -370,7 +369,7 @@
             </div>
             <div class="col-md-4">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Help</h2>
+                    <h2 class="ftco-heading-2">Giúp đỡ</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
                             <li><a href="#" class="py-2 d-block">Thông tin vận chuyển</a></li>
@@ -395,6 +394,8 @@
                             </li>
                             <li><a href="#"><span class="icon icon-phone"></span><span
                                     class="text">028-38966780</span></a></li>
+
+
                             <li><a href="#"><span class="icon icon-envelope"></span><span
                                     class="text">pdaotao@hcmuaf.edu.vn</span></a>
                             </li>
@@ -407,13 +408,10 @@
             <div class="col-md-12 text-center">
 
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Bản quyền &copy;<script>document.write(new Date().getFullYear());</script>
-                    Mọi quyền được bảo lưu | Mẫu này được thực hiện <i
-                        class="icon-heart color-danger"
-                        aria-hidden="true"></i> bởi <a
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
+                                                              aria-hidden="true"></i> <a
                         href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
         </div>

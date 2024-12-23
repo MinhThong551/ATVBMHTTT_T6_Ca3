@@ -108,11 +108,11 @@ public class AddProductController extends HttpServlet {
         products.setProvider(Integer.parseInt(supplier));
         String categoryData;
         if(category.equalsIgnoreCase("trai-cay-viet")) {
-          categoryData = "Trái cây Việt";
+          categoryData = "Bánh bảo quản ngắn";
         } else if(category.equalsIgnoreCase("trai-cay-nhap")) {
-          categoryData = "Trái cây Nhập";
+          categoryData = "Bánh bảo quản lâu";
         } else {
-          categoryData = "Quà Tặng Trái Cây";
+          categoryData = "bánh nhập";
         }
         products.setCategory(categoryData);
         products.setDateOfImporting(new java.sql.Date(dateImport.getTime()));

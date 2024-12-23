@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng bánh</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -95,9 +95,8 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Bánh
-                </a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Bánh Bánh</a>
+
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -173,7 +172,7 @@
 <div id="toast">
 </div>
 <div class="hero-wrap hero-bread"
-     style="background-image: url('/static/images/bg1_news.jpg');filter: brightness(0.8);">
+     style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -195,9 +194,9 @@
                             <input type="text" placeholder="Tên sản phẩm" id="product-name">
                             <select id="product-category">
                                 <option value="" selected>Tất cả sản phẩm</option>
-                                <option value="Trái cây Việt">Bánh Việt</option>
-                                <option value="Trái cây Nhập">Bánh  Nhập</option>
-                                <option value="Quà Tặng Trái Cây">Quà Tặng Bánh </option>
+                                <option value="Trái cây Việt">Trái cây Việt</option>
+                                <option value="Trái cây Nhập">Trái cây Nhập</option>
+                                <option value="Quà Tặng Trái Cây">Quà Tặng Trái Cây</option>
                             </select>
                             <button class="search-btn" id="search-btn-category">Tìm kiếm</button>
                             <button class="reset-btn" id="reset-btn-category">Cài đặt lại</button>
@@ -242,7 +241,7 @@
                                                         <c:if test="${product.getQuantityStock() == 0}">
                                                         <a href="javascript:void(0);"
                                                            onclick="showToast('No quantity')"
-                                                           style="background-color: gray; color: #fff;"
+                                                           style="background-color: rgb(128,128,128); color: #fff;"
                                                            class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                             <span><i
                                                                     class="ion-ios-cart"></i></span>
@@ -320,8 +319,7 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Bánh  tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua bánh  lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh ngon , thơm , giá cả phải chăng</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
                         </li>
@@ -337,17 +335,20 @@
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
-                               class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                               class="py-2 d-block">Cửa
+                            hàng chúng tôi</a></li>
                         <li><a href="${pageContext.request.contextPath}/page/about"
-                               class="py-2 d-block">Về chúng tôi</a></li>
+                               class="py-2 d-block">Về chúng
+                            tôi</a></li>
                         <li><a href="${pageContext.request.contextPath}/page/contact"
-                               class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                               class="py-2 d-block">Liên hệ với
+                            chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Help</h2>
+                    <h2 class="ftco-heading-2">Giúp đỡ</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
                             <li><a href="#" class="py-2 d-block">Thông tin vận chuyển</a></li>
@@ -372,6 +373,8 @@
                             </li>
                             <li><a href="#"><span class="icon icon-phone"></span><span
                                     class="text">028-38966780</span></a></li>
+
+
                             <li><a href="#"><span class="icon icon-envelope"></span><span
                                     class="text">pdaotao@hcmuaf.edu.vn</span></a>
                             </li>
@@ -384,12 +387,10 @@
             <div class="col-md-12 text-center">
 
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                     All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
                                                               aria-hidden="true"></i> <a
                         href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
         </div>

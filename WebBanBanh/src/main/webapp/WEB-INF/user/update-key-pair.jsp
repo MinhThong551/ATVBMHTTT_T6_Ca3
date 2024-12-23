@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
   <%@ page isELIgnored="false" %>
-  <title>Đổi mật khẩu</title>
+  <title>Quản lí khóa </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -56,7 +56,7 @@
      id="ftco-navbar">
   <div class="container navbar-container">
     <div class="navbar-brand">
-      <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Bánh</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Bánh Bánh</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -189,7 +189,7 @@
           <button type="submit" name="action" value="save-key" id="save-changes" style="background: greenyellow">Lưu thay đổi</button>
         </div>
         <div class="download-button-container">
-          <a type="button" id="download-crypto-tools" download href="WebBanBanh/src/main/webapp/CryptoTools.jar">Tải xuống CryptoTools.exe</a>
+          <a type="button" id="download-crypto-tools" download href="/CryptoTools.jar">Tải xuống CryptoTools.exe</a>
         </div>
 
         <c:if test="${not empty result}">

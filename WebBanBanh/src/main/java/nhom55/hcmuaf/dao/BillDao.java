@@ -31,7 +31,7 @@ public interface BillDao {
 
     public String getBillHashById(int idBill);
 
-    public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
+   public boolean updateBillVerifyStatus(int idBill, String verifyStatus);
 
     public List<Bills> getAllBills();
 
@@ -39,4 +39,10 @@ public interface BillDao {
     public String getBillDetailsAsString(int idBill);
     public boolean updateBillFeatures(int idBill, String billFeatures);
     public String getEmailByBillId(int billId);
+
+    public String getSignatureById(int idBill);
+
+    public String getPublicKeyByUserId(int userId);
+
+   public String getBillVerifyStatus(int billId);
 }
