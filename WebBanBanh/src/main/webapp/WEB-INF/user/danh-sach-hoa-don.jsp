@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/ds-hoa-don.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/UserManager.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">

@@ -268,6 +268,7 @@
     border-collapse: collapse;
     height: auto;">
                     <tr>
+                        <th style="width: 100px;">ID</th>
                         <th style="width: 200px;">Tên người dùng</th>
                         <th style="width: 150px;">Ngày đặt hàng</th>
                         <th style="width: 150px;">Tổng tiền</th>
@@ -277,6 +278,7 @@
                     </tr>
                     <c:forEach items="${listBills}" var="bill">
                         <tr style="background-color: #fff">
+                            <td>${bill.getId()}</td>
                             <td>${bill.getLastName()} ${bill.getFirstName()}</td>
                             <td>${bill.getOrderedDate().getDayOfMonth()}/${bill.getOrderedDate().getMonthValue()}/${bill.getOrderedDate().getYear()}</td>
                             <td><fmt:formatNumber pattern="#,##0 ₫"
@@ -346,34 +348,134 @@
                 <form action="${pageContext.request.contextPath}/admin/order/order-list" method="POST">
                     <button type="submit" name="updateAll">Cập nhật tất cả</button>
                 </form>
+                <div class="changed-orders">
+                    <span>Danh sách các hóa đơn đã thay đổi:</span>
+                    <c:if test="${not empty changedBills}">
+                        <table class="table-sanpham" style="width: 100%; border-collapse: collapse; height: auto;">
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên người dùng</th>
+                                <th>Ngày đặt hàng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            <c:forEach items="${changedBills}" var="changedBill">
+                                <tr>
+                                    <td>${changedBill.getId()}</td>
+                                    <td>${changedBill.getLastName()} ${changedBill.getFirstName()}</td>
+                                    <td>${changedBill.getOrderedDate().getDayOfMonth()}/${changedBill.getOrderedDate().getMonthValue()}/${changedBill.getOrderedDate().getYear()}</td>
+                                    <td><fmt:formatNumber pattern="#,##0 ₫" value="${changedBill.getTotalPrice()}"/></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:if>
+                </div>
             </div>
+
+            <!-- Hiển thị danh sách các đơn hàng đã thay đổi -->
+
         </div>
     </section>
 
     <style>
-        /* Căn giữa form */
+        /* Chỉnh sửa cho container */
         .form-container {
-            margin-left: 35px;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Độ cao chiếm toàn bộ màn hình */
+            width: 100%;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
 
-        /* Styling cơ bản cho button */
-        form button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #007bff;
+        /* Style cho form */
+        .form-container form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            border-radius: 4px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-        form button:hover {
-            background-color: #0056b3;
+        .form-container button:hover {
+            background-color: #45a049;
         }
+
+        /* Style cho phần danh sách các hóa đơn đã thay đổi */
+        .changed-orders {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style cho tiêu đề danh sách */
+        .changed-orders span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Style cho bảng */
+        .table-sanpham {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-sanpham th,
+        .table-sanpham td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .table-sanpham th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .table-sanpham tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .table-sanpham td {
+            color: #555;
+        }
+
+        .table-sanpham td:last-child {
+            text-align: center;
+        }
+
+        /* Style cho cột số tiền */
+        .table-sanpham td:last-child {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* Đảm bảo các phần tử responsive */
+        @media screen and (max-width: 768px) {
+            .table-sanpham th, .table-sanpham td {
+                font-size: 12px;
+                padding: 8px;
+            }
+            .form-container button {
+                font-size: 14px;
+            }
+        }
+
 
     </style>
 </div>
