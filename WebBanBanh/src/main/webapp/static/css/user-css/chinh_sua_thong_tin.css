@@ -33,9 +33,9 @@ table tr td:last-child {
     background-color: #FFFFFF;
 }
 .update-user:hover {
-    color:  #82ae46;
-    fill:  #82ae46;
-    border: 1px solid  #82ae46;
+    color:  #3c312e;
+    fill:  #3c312e;
+    border: 1px solid  #3c312e;
 }
 .not-empty {
     color: red;
