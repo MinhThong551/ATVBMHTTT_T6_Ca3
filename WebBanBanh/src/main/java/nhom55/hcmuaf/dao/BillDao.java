@@ -43,4 +43,6 @@ public interface BillDao {
     public String getSignatureById(int idBill);
 
     public String getPublicKeyByUserId(int userId);
+
+   public String getBillVerifyStatus(int billId);
 }

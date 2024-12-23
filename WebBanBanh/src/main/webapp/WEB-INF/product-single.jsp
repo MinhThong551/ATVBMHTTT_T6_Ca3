@@ -6,7 +6,7 @@
     <fmt:setLocale value="vi_VN"/>
     <%@ page isELIgnored="false" %>
 
-    <title>Cửa hàng trái cây</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="${pageContext.request.contextPath}/static/css/read-more/normal/jquery.readall.css"

@@ -110,13 +110,12 @@ public class billDetail extends HttpServlet {
             // Lưu billHash vào bảng bills
             try {
                 JDBIConnector.get().withHandle(h ->
-                        h.createUpdate("UPDATE bills SET billHash = :billHash , bill_features = :billFeatures WHERE id = :idBill")
+                        h.createUpdate("UPDATE bills SET billHash = :billHash  WHERE id = :idBill")
                                 .bind("billHash", billHash)
-                                .bind("billFeatures", billFeatures)
                                 .bind("idBill", idBill)
                                 .execute()
                 );
-                System.out.println("Bill hash and features saved to database.");
+                System.out.println("Bill hash saved to database.");
             } catch (Exception e) {
                 e.printStackTrace();
                 response.setContentType("text/html");

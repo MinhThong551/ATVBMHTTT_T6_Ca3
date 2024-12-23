@@ -11,7 +11,7 @@
 <html>
 <head>
     <fmt:setLocale value="vi_VN"/>
-    <title>Cửa hàng trái cây</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -56,9 +56,7 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng
-                Trái
-                Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Bánh Bánh</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -427,8 +425,7 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
+                    <h2 class="ftco-heading-2">Bánh mềm mịn</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
                         </li>

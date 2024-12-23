@@ -89,35 +89,45 @@ public class OrderList extends HttpServlet {
                 boolean isSignatureValid = verifySignature(billn, base64Signature, publicKey);
                 System.out.println("Signature Verification Result (Bill ID " + idBill + "): " + isSignatureValid); // Log kết quả xác thực chữ ký
 
+                // Nếu chữ ký hợp lệ, không cần làm gì cả
                 if (isSignatureValid) {
-                    // Nếu chữ ký hợp lệ, không cần thay đổi trạng thái
                     System.out.println("Chữ ký hợp lệ cho Bill ID: " + idBill);
-                } else {
-                    // Nếu chữ ký không hợp lệ, cập nhật trạng thái của hóa đơn và gửi email
-                    System.out.println("Xác thực chữ ký thất bại cho Bill ID: " + idBill);
-
-                    // Cập nhật trạng thái hóa đơn
-                    String verifyStatus = "đã thay đổi";
-                    billDao.updateBillVerifyStatus(idBill, verifyStatus); // Cập nhật trạng thái verifyStatus thành "đã thay đổi"
-                    billDao.updateStatusABill(idBill, "Đã hủy"); // Cập nhật trạng thái hóa đơn thành "Đã hủy"
-
-                    // Kiểm tra xem email đã được gửi chưa
-                    if (!sentEmailBills.contains(idBill)) {
-                        String userEmail = billDao.getEmailByBillId(idBill);
-                        String subject = "Thông báo: Đơn hàng đã bị hủy";
-                        String message = "Đơn hàng của bạn đã bị hủy và tiền sẽ được hoàn trả về tài khoản trong vòng 24 giờ. Xem chi tiết đơn hàng tại: \"\n" +
-                                "      \"http://localhost:8080/page/bill/list-bill ";
-
-                        // Gửi email
-                        EmailUtil.sendNotificationEmail(userEmail, subject, message);
-                        System.out.println("Đã gửi email thông báo đến: " + userEmail); // Log email đã gửi
-
-                        // Thêm hóa đơn vào danh sách đã gửi email
-                        sentEmailBills.add(idBill);
-                    } else {
-                        System.out.println("Email đã được gửi cho Bill ID: " + idBill); // Log trường hợp email đã được gửi
-                    }
+                    continue; // Bỏ qua việc kiểm tra trạng thái và các thao tác tiếp theo
                 }
+
+                // Nếu chữ ký không hợp lệ, lấy trạng thái verify của hóa đơn
+                String verifyStatus = billDao.getBillVerifyStatus(idBill);
+                System.out.println("Current Verify Status (Bill ID " + idBill + "): " + verifyStatus); // Log trạng thái verify
+
+                if (verifyStatus.equals("chưa xác thực") || verifyStatus.equals("đã thay đổi")) {
+                    System.out.println("Chữ ký không hợp lệ, nhưng hóa đơn có trạng thái 'chưa xác thực' hoặc 'đã thay đổi'. Không gửi email.");
+                    continue; // Không gửi email nếu trạng thái là 'chưa xác thực' hoặc 'đã thay đổi'
+                }
+
+                // Cập nhật trạng thái hóa đơn và gửi email nếu trạng thái verify hợp lệ
+                System.out.println("Xác thực chữ ký thất bại cho Bill ID: " + idBill);
+
+                // Cập nhật trạng thái hóa đơn
+                billDao.updateBillVerifyStatus(idBill, "đã thay đổi"); // Cập nhật trạng thái verifyStatus thành "đã thay đổi"
+                billDao.updateStatusABill(idBill, "Đã hủy"); // Cập nhật trạng thái hóa đơn thành "Đã hủy"
+
+                // Kiểm tra xem email đã được gửi chưa
+                if (!sentEmailBills.contains(idBill)) {
+                    String userEmail = billDao.getEmailByBillId(idBill);
+                    String subject = "Thông báo: Đơn hàng đã bị hủy";
+                    String message = "Đơn hàng của bạn đã bị hủy và tiền sẽ được hoàn trả về tài khoản trong vòng 24 giờ. Xem chi tiết đơn hàng tại: \n" +
+                            "http://localhost:8080/page/bill/list-bill";
+
+                    // Gửi email
+                    EmailUtil.sendNotificationEmail(userEmail, subject, message);
+                    System.out.println("Đã gửi email thông báo đến: " + userEmail); // Log email đã gửi
+
+                    // Thêm hóa đơn vào danh sách đã gửi email
+                    sentEmailBills.add(idBill);
+                } else {
+                    System.out.println("Email đã được gửi cho Bill ID: " + idBill); // Log trường hợp email đã được gửi
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Lỗi trong quá trình xử lý Bill ID: " + idBill); // Log lỗi

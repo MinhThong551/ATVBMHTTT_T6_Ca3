@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Cửa hàng trái cây</title>
+    <title>Bánh Bánh</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -164,7 +164,7 @@
             <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                 <div class="heading-section-bold mb-4 mt-md-5">
                     <div class="ml-md-0">
-                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng trái cây online, trang web
+                        <h2 class="mb-4">Chào mừng bạn đến với Bánh Bánh online, trang web
                             của chúng tôi</h2>
                     </div>
                 </div>
