@@ -50,6 +50,8 @@
 
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/update-pass.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/UserManager.css">
+
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"

@@ -49,6 +49,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/UserManager.css">
+
 
 </head>
 <body class="goto-here">
